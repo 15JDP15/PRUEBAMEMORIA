@@ -109,14 +109,14 @@ form {
 /* Estilos para el temporizador */
 #timer {
     font-size: 1.2em; /* Tamaño de fuente más pequeño */
-    background-color: #007bff; /* Cambio de color de fondo al pasar el ratón */
+    background-color: #007bffb0; /* Cambio de color de fondo al pasar el ratón */
     color: #fff; /* Cambio de color del texto al pasar el ratón */
     padding: 6px 15px; /* Espaciado interno reducido */
     border: 2px solid #007bff; /* Borde más delgado en azul */
     border-radius: 5px; /* Bordes menos redondeados para una forma más rectangular */
-    width: 50px; /* Ancho reducido */
-    height: 50px; /* Altura reducida */
-    line-height: 50px; /* Alineación vertical del texto */
+    width: 600px; /* Ancho reducido */
+    height: 40px; /* Altura reducida */
+    line-height: 40px; /* Alineación vertical del texto */
     text-align: center; /* Alineación horizontal del texto */
     box-shadow: 0px 6px 10px rgba(0, 123, 255, 0.2); /* Sombra más sutil */
     margin: 20px auto; /* Centrado y margen */
