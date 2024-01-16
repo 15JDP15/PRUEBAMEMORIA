@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f411;
+    background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
     display: flex;
@@ -85,7 +85,7 @@ form {
 
 #timer {
     font-size: 1em; /* Tamaño de fuente grande */
-    background-color: #007bff; /* Color de fondo (puedes elegir el color que prefieras) */
+    background-color: #ff0000; /* Color de fondo (puedes elegir el color que prefieras) */
     color: white; /* Color del texto */
     padding: 10px 20px; /* Espaciado interno */
     border-radius: 10px; /* Bordes redondeados */
