@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var imageArea = document.getElementById('imageArea');
         if(imageArea) {
             imageArea.style.display = 'block';
-            imageArea.innerHTML = '<img src="../images/pruebamemoria.jpg" alt="Imagen de Memoria" class="responsive-image" />';
+            imageArea.innerHTML = '<img src="images/pruebamemoria.jpg" alt="Imagen de Memoria" class="responsive-image" />';
         }
     }
     
