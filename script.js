@@ -1,61 +1,38 @@
 document.addEventListener('DOMContentLoaded', function() {
     var startTestButton = document.getElementById('startTest');
-    var introElement = document.getElementById('intro'); // Obtener el elemento de la introducción
-    var timerElement = document.getElementById('timer'); // Obtener el elemento del temporizador
-
-    if (startTestButton) {
-        startTestButton.addEventListener('click', function() {
-            if (introElement) {
-                introElement.style.display = 'none'; // Ocultar la introducción
-            }
-            startTestButton.style.display = 'none'; // Ocultar el botón de inicio
-            timerElement.style.display = 'block'; // Mostrar el temporizador
-
-            var timeLeft = 5; // Duración del temporizador en segundos
-            var timerInterval = setInterval(function() {
-                if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    hideImageAndShowQuestions();
-                } else {
-                    timerElement.innerText = timeLeft; // Actualizar el temporizador
-                }
-                timeLeft -= 1;
-            }, 1000);
-
-            showImage();
-        });
-    }
-function showImage() {
-    var imageArea = document.getElementById('imageArea');
-    if (imageArea) {
-        imageArea.style.display = 'block';
-        imageArea.innerHTML = '<img src="images/pruebamemoria.jpg" alt="Imagen de Memoria" class="responsive-image" />';
-    }
-}
-
-function hideImageAndShowQuestions() {
+    var introElement = document.getElementById('intro');
+    var timerElement = document.getElementById('timer');
     var imageArea = document.getElementById('imageArea');
     var questionForm = document.getElementById('questionForm');
-    if (imageArea && questionForm) {
-        imageArea.style.display = 'none';
-        questionForm.style.display = 'block';
-        timerElement.style.display = 'none'; // Ocultar el temporizador
-    }
-}
+    var confirmationMessage = document.getElementById('confirmationMessage');
 
-var questionForm = document.getElementById('questionForm');
-if (questionForm) {
+    startTestButton.addEventListener('click', function() {
+        introElement.style.display = 'none';
+        startTestButton.style.display = 'none';
+        imageArea.style.display = 'block';
+        imageArea.innerHTML = '<img src="images/pruebamemoria.jpg" alt="Imagen de Memoria" class="responsive-image" />';
+        timerElement.style.display = 'block';
+
+        var timeLeft = 5;
+        var timerInterval = setInterval(function() {
+            timerElement.innerText = timeLeft;
+
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                timerElement.style.display = 'none';
+                imageArea.style.display = 'none';
+                questionForm.style.display = 'block';
+                questionForm.style.opacity = 1;
+                questionForm.style.transform = 'translateY(0)';
+            }
+
+            timeLeft -= 1;
+        }, 1000);
+    });
+
     questionForm.addEventListener('submit', function(event) {
         event.preventDefault();
-
-        // Mostrar mensaje de confirmación
-        var confirmationMessage = document.getElementById('confirmationMessage');
-        if (confirmationMessage) {
-            confirmationMessage.style.display = 'block';
-        }
-
-        // Opcionalmente, ocultar el formulario
+        confirmationMessage.style.display = 'block';
         questionForm.style.display = 'none';
     });
-}
 });
