@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     var startTestButton = document.getElementById('startTest');
+    var introElement = document.getElementById('intro'); // Obtener el elemento de la introducción
     var timerElement = document.getElementById('timer'); // Obtener el elemento del temporizador
 
     if (startTestButton) {
         startTestButton.addEventListener('click', function() {
+            if (introElement) {
+                introElement.style.display = 'none'; // Ocultar la introducción
+            }
             startTestButton.style.display = 'none'; // Ocultar el botón de inicio
             timerElement.style.display = 'block'; // Mostrar el temporizador
 
@@ -20,9 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             showImage();
         });
-   
-}
-
+    }
 function showImage() {
     var imageArea = document.getElementById('imageArea');
     if (imageArea) {

@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
@@ -13,15 +15,27 @@ body {
 .container {
     background-color: white;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    width: 80%;
-    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 90%;
+    max-width: 700px;
+    transition: transform 0.3s ease-in-out;
 }
 
 h1 {
     text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+#intro {
+    background-color: #e8f0fe;
     color: #333;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #imageArea {
@@ -33,13 +47,14 @@ button {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
     display: block;
     width: 100%;
     margin-top: 20px;
+    transition: background-color 0.2s ease;
 }
 
 button:hover {
@@ -68,26 +83,13 @@ form {
 }
 
 #confirmationMessage {
-    background-color: #007bff;
+    background-color: #28a745;
     color: white;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
     margin-top: 20px;
 }
-
-
-
-#intro {
-    background-color: #e8f0fe; /* Un color de fondo suave */
-    color: #333; /* Color del texto */
-    padding: 15px; /* Espaciado interno para una mejor presentación */
-    border-radius: 10px; /* Bordes redondeados */
-    margin: 20px 0; /* Margen superior e inferior */
-    text-align: center; /* Centrar el texto */
-}
-
-
 
 .responsive-image {
     max-width: 100%;
@@ -97,13 +99,21 @@ form {
 }
 
 #timer {
-    font-size: 1em; /* Tamaño de fuente grande */
-    background-color: #007bff; /* Color de fondo (puedes elegir el color que prefieras) */
-    color: white; /* Color del texto */
-    padding: 10px 20px; /* Espaciado interno */
-    border-radius: 10px; /* Bordes redondeados */
-    margin: 20px auto; /* Centrado horizontal y un poco de margen */
-    display: none; /* Inicialmente oculto */
-    text-align: center; /* Texto centrado */
+    font-size: 2em;
+    background-color: #007bff;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    margin: 20px auto;
+    text-align: center;
 }
 
+/* Animación al cargar la página */
+.container {
+    animation: appear 0.5s ease-in-out;
+}
+
+@keyframes appear {
+    from {opacity: 0;transform: scale(0.95); } to { opacity: 1; transform: scale(1); }
+        }
+       
