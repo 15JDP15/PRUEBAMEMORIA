@@ -45,8 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if(questionForm) {
         questionForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            var openQuestionAnswer = document.getElementById('openQuestion').value;
-            
+            // Puedes procesar aquí los datos del formulario como necesites
 
             // Mostrar mensaje de confirmación
             document.getElementById('confirmationMessage').style.display = 'block';
