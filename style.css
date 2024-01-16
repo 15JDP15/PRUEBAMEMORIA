@@ -36,14 +36,46 @@ body {
     justify-content: center;
 }
 
+#main-title {
+    text-align: center; /* Asegura que el título esté centrado */
+    font-size: 2.5em; /* Ajusta el tamaño del texto según sea necesario */
+    color: white;
+    margin-top: 100px; /* Espacio por encima del título */
+    margin-bottom: 10px; /* Espacio debajo del título antes del test */
+}
+
+
+#navbar {
+    background-color: var(--primary-color); /* Color de fondo */
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 10px 0; /* Relleno de la barra de navegación */
+    margin-left: -10px; /* Extiende hacia la izquierda */
+    width: calc(100% + 20px); /* Compensa el margen negativo */
+}
+
+#navbar ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center; /* Alinea los elementos de la lista horizontalmente y los centra */
+}
+
 #navbar a {
     color: white;
     text-decoration: none;
-    padding: 10px;
-    margin: 0 15px;
+    padding: 10px 15px; /* Relleno de los enlaces */
+    margin: 0 10px; /* Margen entre enlaces */
     font-weight: bold;
     transition: color 0.3s ease-in-out;
 }
+
+
 
 #navbar a:hover {
     color: var(--secondary-color);

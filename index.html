@@ -15,36 +15,23 @@
         </ul>
     </nav>
 
-    <header>
-        <h1>Memory Test</h1>
-    </header>
+    <!-- Título añadido aquí -->
+    <h1 id="main-title">Memory Test</h1>
 
     <div class="container">
+        <button id="startTest">Start Test</button>
         <div id="intro">
             <p>Hello! You are going to do a memory test to check the limits of your memory. Good Luck!</p>
         </div>
         <div id="imageArea"></div>
-        <button id="startTest">Start Test</button>
         <div id="timer" style="display:none;">5</div>
         
         <form id="questionForm" style="display:none;">
-            <p>What was the predominant color in the image?</p>
-            <label><input type="radio" name="question1" value="red"> Red</label>
-            <label><input type="radio" name="question1" value="blue"> Blue</label>
-            <label><input type="radio" name="question1" value="yellow"> Yellow</label>
-
-            <div class="question">
-                <p>Describe an object you remember from the image:</p>
-                <input type="text" id="openQuestion" class="openQuestion" placeholder="Write your answer here">
-            </div>
-            
-            <div class="submit-button">
-                <button type="submit">Submit Answer</button>
-            </div>
+            <!-- Preguntas y respuestas aquí -->
         </form>
-        
+
         <div id="confirmationMessage" style="display:none;">
-            <p>Answer submitted!</p>
+            <p>Your response has been submitted!</p>
         </div>
     </div>
 
@@ -65,7 +52,6 @@
 
     <footer>
         <p>&copy; 2024 Memory Test. All rights reserved.</p>
-        <p>Follow us on [Social Media]</p>
     </footer>
 
     <script src="script.js"></script>
