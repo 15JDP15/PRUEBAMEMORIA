@@ -15,19 +15,32 @@
         </ul>
     </nav>
 
-    <!-- Título añadido aquí -->
     <h1 id="main-title">Memory Test</h1>
 
     <div class="container">
-        <button id="startTest">Start Test</button>
         <div id="intro">
             <p>Hello! You are going to do a memory test to check the limits of your memory. Good Luck!</p>
+            <button id="startTest">Start Test</button>
         </div>
-        <div id="imageArea"></div>
+        <div id="imageArea" style="display:none;"></div>
         <div id="timer" style="display:none;">5</div>
         
         <form id="questionForm" style="display:none;">
             <!-- Preguntas y respuestas aquí -->
+            <!-- Ejemplo de preguntas -->
+            <p>What was the predominant color in the image?</p>
+            <label><input type="radio" name="question1" value="red"> Red</label>
+            <label><input type="radio" name="question1" value="blue"> Blue</label>
+            <label><input type="radio" name="question1" value="yellow"> Yellow</label>
+
+            <div class="question">
+                <p>Describe an object you remember from the image:</p>
+                <input type="text" id="openQuestion" class="openQuestion" placeholder="Type your answer here">
+            </div>
+
+            <div class="submit-button">
+                <button type="submit">Submit Answer</button>
+            </div>
         </form>
 
         <div id="confirmationMessage" style="display:none;">
