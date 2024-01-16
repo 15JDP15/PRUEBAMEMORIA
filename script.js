@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
             var openQuestionAnswer = document.getElementById('openQuestion').value;
             
-            eel.handle_data(openQuestionAnswer);  // Envía los datos a Python
 
             // Mostrar mensaje de confirmación
             document.getElementById('confirmationMessage').style.display = 'block';
