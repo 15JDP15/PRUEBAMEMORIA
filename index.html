@@ -1,15 +1,25 @@
-
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Looking for the limits of our memory</title>
-    <link rel="stylesheet" href="style.css"> <!-- Asegúrate de que esta ruta sea correcta -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Memory Test</h1>
+    <nav id="navbar">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#instructions">Instructions</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
+    <header>
+        <h1>Memory Test</h1>
+    </header>
+
+    <div class="container">
         <div id="intro">
             <p>Hello! You are going to do a memory test to check the limits of your memory. Good Luck!</p>
         </div>
@@ -17,31 +27,47 @@
         <button id="startTest">Start Test</button>
         <div id="timer" style="display:none;">5</div>
         
-        
         <form id="questionForm" style="display:none;">
-            <!-- Pregunta 1: Opción Múltiple -->
-            <p>¿Cuál era el color predominante en la imagen?</p>
-            <label><input type="radio" name="question1" value="rojo"> Rojo</label>
-            <label><input type="radio" name="question1" value="azul"> Azul</label>
-            <label><input type="radio" name="question1" value="amarillo"> Amarillo</label>
+            <p>What was the predominant color in the image?</p>
+            <label><input type="radio" name="question1" value="red"> Red</label>
+            <label><input type="radio" name="question1" value="blue"> Blue</label>
+            <label><input type="radio" name="question1" value="yellow"> Yellow</label>
 
-            <!-- Pregunta 2: Respuesta Abierta -->
             <div class="question">
-                <p>Describe un objeto que recuerdes de la imagen:</p>
-                <input type="text" id="openQuestion" class="openQuestion" placeholder="Escribe tu respuesta aquí">
+                <p>Describe an object you remember from the image:</p>
+                <input type="text" id="openQuestion" class="openQuestion" placeholder="Write your answer here">
             </div>
             
-            <!-- Botón para enviar las respuestas -->
             <div class="submit-button">
-                <button type="submit">Enviar Respuesta</button>
+                <button type="submit">Submit Answer</button>
             </div>
         </form>
-        <!-- Mensaje de confirmación, oculto inicialmente -->
+        
         <div id="confirmationMessage" style="display:none;">
-            <p>¡Respuesta enviada!</p>
+            <p>Answer submitted!</p>
         </div>
     </div>
-    <script src="script.js"></script> <!-- Asegúrate de que esta ruta sea correcta -->
 
-    </body>
+    <section id="about">
+        <h2>About This Test</h2>
+        <p>[Description of the test and its purpose]</p>
+    </section>
+
+    <section id="instructions">
+        <h2>Instructions</h2>
+        <p>[Detailed instructions on how to take the test]</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>[Contact information or form]</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Memory Test. All rights reserved.</p>
+        <p>Follow us on [Social Media]</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>

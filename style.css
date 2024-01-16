@@ -1,44 +1,102 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@500;700&display=swap');
 
+/* New Color Palette */
+:root {
+    --primary-color: #4a8fe7; /* Blue */
+    --secondary-color: #ff7675; /* Pink */
+    --background-color: #f5f5f5; /* Light Grey */
+    --text-color: #333; /* Dark Grey */
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #6dd5ed, #2193b0); /* Fondo con gradiente moderno */
+    background: linear-gradient(135deg, #6dd5ed, #2193b0); /* Modern gradient background */
     color: #fff;
     line-height: 1.6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
     padding: 10px;
 }
 
+/* Styles for Navigation */
+#navbar {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+#navbar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+#navbar a:hover {
+    color: var(--secondary-color);
+}
+
 .container {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--background-color);
     padding: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
     width: 90%;
     max-width: 700px;
+    margin: 0 auto;
     transition: transform 0.3s ease-in-out;
-    backdrop-filter: blur(10px); /* Efecto de fondo borroso */
+    backdrop-filter: blur(10px); /* Blurry background effect */
+    margin-top: 60px; /* To avoid overlap with the fixed navbar */
+    text-align: center;
 }
 
 h1 {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
-    color: #007bff;
+    color: var(--primary-color);
     margin-bottom: 20px;
 }
 
-#intro {
-    background-color: rgba(255, 255, 255, 0.7);
-    color: #333;
-    padding: 15px;
+/* Styles for Sections */
+section {
+    padding: 50px 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+/* Styles for Footer */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.8em;
+}
+
+#intro, form {
+    background-color: rgba(255, 255, 255, 0.9); /* White background with transparency */
+    color: var(--text-color); /* Black text */
+    padding: 20px;
     border-radius: 10px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    transition: all 0.5s ease;
 }
 
 #imageArea {
@@ -47,7 +105,7 @@ h1 {
 }
 
 button {
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     padding: 12px 25px;
@@ -60,33 +118,20 @@ button {
     margin-top: 20px;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
+}
 
 button:hover {
     background-color: #0056b3;
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     }
-
-form {
-    margin-top: 20px;
-    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con transparencia */
-    color: #333; /* Texto en negro */
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px 0;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    transition: all 0.5s ease;
-}
-
-.submit-button button {
-    background-color: #28a745; /* Botón de envío en verde */
+    
+    .submit-button button {
+    background-color: #28a745; /* Green submit button */
     margin-top: 10px;
-        }
-        
-#confirmationMessage {
+    }
+    
+    #confirmationMessage {
     background-color: #28a745;
     color: white;
     padding: 15px;
@@ -96,57 +141,57 @@ form {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     animation: fadeIn 0.5s ease-in-out;
-        }
-        
-        .responsive-image {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-        }
-        
-/* Estilos para el temporizador */
-/* Estilos para el temporizador */
-#timer {
-    font-size: 1.2em; /* Tamaño de fuente más pequeño */
-    background-color: #007bffb0; /* Cambio de color de fondo al pasar el ratón */
-    color: #fff; /* Cambio de color del texto al pasar el ratón */
-    padding: 6px 15px; /* Espaciado interno reducido */
-    border: 2px solid #007bff; /* Borde más delgado en azul */
-    border-radius: 5px; /* Bordes menos redondeados para una forma más rectangular */
-    width: 600px; /* Ancho reducido */
-    height: 40px; /* Altura reducida */
-    line-height: 40px; /* Alineación vertical del texto */
-    text-align: center; /* Alineación horizontal del texto */
-    box-shadow: 0px 6px 10px rgba(0, 123, 255, 0.2); /* Sombra más sutil */
-    margin: 20px auto; /* Centrado y margen */
+    }
+    
+    .responsive-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    }
+    
+
+    #timer {
+    font-size: 1.2em; 
+    background-color: #007bffb0;
+    color: #fff; 
+    padding: 6px 15px; 
+    border: 2px solid #007bff; 
+    border-radius: 5px; 
+    width: 600px; 
+    height: 40px; 
+    line-height: 40px; 
+    text-align: center; 
+    box-shadow: 0px 6px 10px rgba(0, 123, 255, 0.2); 
+    margin: 20px auto; 
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease; /* Transición suave para efectos */
-}
+    transition: all 0.3s ease; 
+    }
 
-
-
- .openQuestion {
-    width: 100%;
-    padding: 15px;
-            margin-top: 5px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-            background-color: white; /* Fondo blanco */
-            color: #333; /* Texto en negro */
-            box-sizing: border-box;
-            font-size: 1em;
+    .openQuestion {
+        width: 100%;
+        padding: 15px;
+        margin-top: 5px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        background-color: white; /* White background /
+        color: var(--text-color); / Black text */
+        box-sizing: border-box;
+        font-size:
+        
+        1em;
         }
         
         .openQuestion:focus {
-            border-color: #0056b3; /* Cambio de color al enfocar */
+        border-color: #0056b3; /* Color change on focus */
         }
         
-        /* Animación al cargar la página */
-        .container {
-        animation: appear 0.5s ease-in-out;
+        /* Animations */
+        @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(-20px);}
+        to {opacity: 1; transform: translateY(0);}
         }
         
         @keyframes appear {
@@ -154,7 +199,17 @@ form {
         to {opacity: 1; transform: scale(1);}
         }
         
-        @keyframes fadeIn {
-        from {opacity: 0; transform: translateY(-20px);}
-        to {opacity: 1; transform: translateY(0);}
+        /* Responsiveness */
+        @media (max-width: 768px) {
+        #navbar a {
+        margin: 0 10px;
+        }
+        }
+        
+        /* Additional Styling for Responsiveness and Modern Look */
+        @media (max-width: 600px) {
+        .container, section, #timer {
+        width: 100%;
+        box-sizing: border-box;
+        }
         }
