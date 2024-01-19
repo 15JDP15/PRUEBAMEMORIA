@@ -9,9 +9,8 @@
 <body>
     <nav id="navbar">
         <ul>
-            <li><a href="#about">About</a></li>
+            <li><a href="#test">Test</a></li>            
             <li><a href="#instructions">Instructions</a></li>
-            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
@@ -22,24 +21,48 @@
             <p>Hello! You are going to do a memory test to check the limits of your memory. Good Luck!</p>
             <button id="startTest">Start Test</button>
         </div>
+
+        <!-- Formulario para las preguntas iniciales -->
+        <form id="initialQuestionForm" style="display:none;">
+            <h2>Previous Questions</h2> <!-- Título añadido aquí -->
+            <!-- Preguntas y respuestas aquí -->
+            <div class="name">
+                <p>Full name</p>
+                <input type="text" id="name" class="name" name="name" placeholder="Type your answer here">
+            </div>
+            <p>Select your gender</p>
+            <label><input type="radio" name="gender" value="man"> Man</label>
+            <label><input type="radio" name="gender" value="woman"> Woman</label>
+
+            <!-- Más preguntas si es necesario -->
+            <!-- Ejemplo de otra pregunta -->
+            <p>Select your age range</p>
+            <label><input type="radio" name="age" value="x-y">X-Y</label>
+            <label><input type="radio" name="age" value="z-w">Z-W</label> <!-- Cambiar value y texto para poner edades   -->
+
+            <div class="submit-button">
+                <button type="submit">Continue to Test</button>
+            </div>
+        </form>
+
         <div id="imageArea" style="display:none;"></div>
         <div id="timer" style="display:none;">5</div>
-        
-        <form id="questionForm" style="display:none;">
-            <!-- Preguntas y respuestas aquí -->
-            <!-- Ejemplo de preguntas -->
+
+        <!-- Formulario para las preguntas después de ver la imagen -->
+        <form id="imageQuestionForm" style="display:none;">
             <p>What was the predominant color in the image?</p>
-            <label><input type="radio" name="question1" value="red"> Red</label>
-            <label><input type="radio" name="question1" value="blue"> Blue</label>
-            <label><input type="radio" name="question1" value="yellow"> Yellow</label>
+            <label><input type="radio" name="color" value="red"> Red</label>
+            <label><input type="radio" name="color" value="blue"> Blue</label>
+            <label><input type="radio" name="color" value="yellow"> Yellow</label>
 
             <div class="question">
                 <p>Describe an object you remember from the image:</p>
-                <input type="text" id="openQuestion" class="openQuestion" placeholder="Type your answer here">
+                <input type="text" id="object" class="object" name="object" placeholder="Type your answer here">
             </div>
 
             <div class="submit-button">
                 <button type="submit">Submit Answer</button>
+                <div id="loadingMessage" style="display:none;">Enviando respuestas...</div>
             </div>
         </form>
 
@@ -48,24 +71,10 @@
         </div>
     </div>
 
-    <section id="about">
-        <h2>About This Test</h2>
-        <p>[Description of the test and its purpose]</p>
-    </section>
-
     <section id="instructions">
         <h2>Instructions</h2>
         <p>[Detailed instructions on how to take the test]</p>
     </section>
-
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>[Contact information or form]</p>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Memory Test. All rights reserved.</p>
-    </footer>
 
     <script src="script.js"></script>
 </body>
