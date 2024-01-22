@@ -12,7 +12,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #e1e4e7, #d9dee2); 
+    background: linear-gradient(135deg, #eaeaea, #eaeaea); 
     color: var(--primary-color);
     line-height: 1.6;
     margin: 0;
@@ -133,13 +133,25 @@ footer {
 }
 
 
-#intro, form {
+#intro {
     background-color: rgba(255, 255, 255, 0.9); /* White background with transparency */
     color: var(--text-color); /* Black text */
     padding: 20px;
     border-radius: 10px;
     margin: 20px 0;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    transition: all 0.5s ease;
+}
+
+.form {
+    background-color: rgba(255, 255, 255, 0.9); /* White background with transparency */
+    color: var(--text-color); /* Black text */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: left;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     transition: all 0.5s ease;

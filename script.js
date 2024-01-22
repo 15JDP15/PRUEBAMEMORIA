@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var confirmationMessage = document.getElementById('confirmationMessage');
     var loadingMessage = document.getElementById('loadingMessage');
 
-    var initialFormData = {}; // Objeto para almacenar los datos del formulario inicial
+    var formData = {}; // Objeto para almacenar los datos
     var uniqueId = new Date().getTime(); // Identificador único
 
     // Manejo de la navegación
@@ -35,11 +35,11 @@ document.addEventListener('DOMContentLoaded', function() {
         initialQuestionForm.addEventListener('submit', function(event) {
             event.preventDefault();
             new FormData(initialQuestionForm).forEach((value, key) => {
-                initialFormData[key] = value;
+                formData[key] = value;
             });
-            initialFormData["uniqueId"] = uniqueId;
+            formData["uniqueId"] = uniqueId;
 
-            sendInitialDataToGoogleSheet(initialFormData);
+            // sendInitialDataToGoogleSheet(initialFormData); // Removido
 
             initialQuestionForm.style.display = 'none';
             imageArea.style.display = 'block';
@@ -49,14 +49,12 @@ document.addEventListener('DOMContentLoaded', function() {
             var timeLeft = 5;
             var timerInterval = setInterval(function() {
                 timerElement.innerText = timeLeft;
-
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
                     timerElement.style.display = 'none';
                     imageArea.style.display = 'none';
                     imageQuestionForm.style.display = 'block';
                 }
-
                 timeLeft -= 1;
             }, 1000);
         });
@@ -67,15 +65,14 @@ document.addEventListener('DOMContentLoaded', function() {
         imageQuestionForm.addEventListener('submit', function(event) {
             event.preventDefault();
             new FormData(imageQuestionForm).forEach((value, key) => {
-                initialFormData[key] = value;
+                formData[key] = value;
             });
-            initialFormData["uniqueId"] = uniqueId;
 
-            sendFinalDataToGoogleSheet(initialFormData);
+            sendFormDataToGoogleSheet(formData);
         });
     }
 
-    function sendInitialDataToGoogleSheet(data) {
+    function sendFormDataToGoogleSheet(data) {
         loadingMessage.style.display = 'block';
         fetch('https://script.google.com/macros/s/AKfycby8uZhweB25w1S8sr8oQJSySMxBItKA9evnbaXpohFVDaCXIsEmQNoRy_DOWULMNLiJ/exec', {
             method: 'POST',
@@ -85,25 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             body: JSON.stringify(data)
         }).then(response => {
-            console.log('Initial data sent to Google Sheet');
-        }).catch(error => {
-            console.error('Error:', error);
-        }).finally(() => {
-            loadingMessage.style.display = 'none';
-        });
-    }
-
-    function sendFinalDataToGoogleSheet(data) {
-        loadingMessage.style.display = 'block';
-        fetch('https://script.google.com/macros/s/AKfycby8uZhweB25w1S8sr8oQJSySMxBItKA9evnbaXpohFVDaCXIsEmQNoRy_DOWULMNLiJ/exec', {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }).then(response => {
-            console.log('Final data sent to Google Sheet');
+            console.log('Data sent to Google Sheet');
             confirmationMessage.style.display = 'block';
             imageQuestionForm.style.display = 'none';
         }).catch(error => {
