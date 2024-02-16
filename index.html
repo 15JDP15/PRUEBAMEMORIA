@@ -4,8 +4,240 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Looking for the limits of our memory</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@500;700&display=swap');
+
+:root {
+    --primary-color: #165892;
+    --background-color: #efefef;
+    --text-color: #333;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 10px;
+}
+
+#navbar {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0; 
+    z-index: 1000;
+}
+
+#navbar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#main-title {
+    text-align: center;
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-top: 100px;
+    margin-bottom: 10px;
+}
+
+#navbar {
+    background-color: var(--primary-color);
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 10px 0;
+    margin-left: -10px;
+    width: calc(100% + 20px);
+}
+
+#navbar ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+#navbar a {
+    color: var(--background-color);
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.container {
+    background-color: var(--background-color);
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    transition: transform 0.3s ease-in-out;
+    backdrop-filter: blur(10px);
+    margin-top: 60px;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+section {
+    padding: 50px 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+
+#intro, .form {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    transition: all 0.5s ease;
+}
+
+#imageArea {
+    text-align: center;
+    margin: 20px 0;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 700;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: var(--primary-color);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.submit-button button {
+    background-color: var(--primary-color);
+    margin-top: 10px;
+}
+
+#confirmationMessage {
+    background-color: #28a745;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+#timer {
+    font-size: 1.2em;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 6px 15px;
+    width: 600px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.object, .name {
+    width: 100%;
+    padding: 15px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.object:focus, .name:focus {
+    border-color: #0056b3;
+}
+
+.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: var(--primary-color);
+    overflow: hidden;
+    color: white;
+    text-align: justify;
+    font-size: 1em;
+}
+
+section h2 {
+    font-size: 1.5em;
+}
+
+section p {
+    font-size: 1em;
+    margin: 15px 0;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+@media (max-width: 768px) {
+    #navbar a {
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .container, section, #timer {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+</style>         
 <body>
     <nav id="navbar">
         <ul>
@@ -71,7 +303,101 @@
         <h2>Instructions</h2>
         <p>[Detailed instructions on how to take the test]</p>
     </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var startTestButton = document.getElementById('startTest');
+    var introElement = document.getElementById('intro');
+    var timerElement = document.getElementById('timer');
+    var imageArea = document.getElementById('imageArea');
+    var initialQuestionForm = document.getElementById('initialQuestionForm');
+    var imageQuestionForm = document.getElementById('imageQuestionForm');
+    var confirmationMessage = document.getElementById('confirmationMessage');
+    var loadingMessage = document.getElementById('loadingMessage');
 
-    <script src="script.js"></script>
+    var formData = {}; // Objeto para almacenar los datos
+    var uniqueId = new Date().getTime(); // Identificador único
+
+    // Manejo de la navegación
+    const navbarLinks = document.querySelectorAll('#navbar a');
+    navbarLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const section = document.querySelector(this.getAttribute('href'));
+            section.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Inicia el test
+    if (startTestButton) {
+        startTestButton.addEventListener('click', function() {
+            introElement.style.display = 'none';
+            startTestButton.style.display = 'none';
+            initialQuestionForm.style.display = 'block';
+        });
+    }
+
+    // Manejo del envío del formulario inicial
+    if (initialQuestionForm) {
+        initialQuestionForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            new FormData(initialQuestionForm).forEach((value, key) => {
+                formData[key] = value;
+            });
+            formData["uniqueId"] = uniqueId;
+
+            // sendInitialDataToGoogleSheet(initialFormData); // Removido
+
+            initialQuestionForm.style.display = 'none';
+            imageArea.style.display = 'block';
+            timerElement.style.display = 'block';
+            imageArea.innerHTML = '<img src="images/pruebamemoria.jpg" alt="Memory Test Image" class="responsive-image" />';
+
+            var timeLeft = 5;
+            var timerInterval = setInterval(function() {
+                timerElement.innerText = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerElement.style.display = 'none';
+                    imageArea.style.display = 'none';
+                    imageQuestionForm.style.display = 'block';
+                }
+                timeLeft -= 1;
+            }, 1000);
+        });
+    }
+
+    // Manejo del envío del formulario de la imagen
+    if (imageQuestionForm) {
+        imageQuestionForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            new FormData(imageQuestionForm).forEach((value, key) => {
+                formData[key] = value;
+            });
+
+            sendFormDataToGoogleSheet(formData);
+        });
+    }
+
+    function sendFormDataToGoogleSheet(data) {
+        loadingMessage.style.display = 'block';
+        fetch('https://script.google.com/macros/s/AKfycby8uZhweB25w1S8sr8oQJSySMxBItKA9evnbaXpohFVDaCXIsEmQNoRy_DOWULMNLiJ/exec', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(response => {
+            console.log('Data sent to Google Sheet');
+            confirmationMessage.style.display = 'block';
+            imageQuestionForm.style.display = 'none';
+        }).catch(error => {
+            console.error('Error:', error);
+        }).finally(() => {
+            loadingMessage.style.display = 'none';
+        });
+    }
+});
+    </script>
 </body>
 </html>
