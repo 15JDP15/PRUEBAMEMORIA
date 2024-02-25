@@ -4,400 +4,247 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Looking for the limits of our memory</title>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@500;700&display=swap');
-
-:root {
-    --primary-color: #165892;
-    --background-color: #efefef;
-    --text-color: #333;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--background-color);
-    color: var(--primary-color);
-    line-height: 1.6;
-    margin: 0;
-    padding: 10px;
-}
-
-#navbar {
-    background-color: var(--primary-color);
-    color: var(--background-color);
-    padding: 10px;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    top: 0; 
-    z-index: 1000;
-}
-
-#navbar ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
-#main-title {
-    text-align: center;
-    font-size: 2.5em;
-    color: var(--primary-color);
-    margin-top: 100px;
-    margin-bottom: 10px;
-}
-
-#navbar {
-    background-color: var(--primary-color);
-    text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    padding: 10px 0;
-    margin-left: -10px;
-    width: calc(100% + 20px);
-}
-
-#navbar ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-}
-
-#navbar a {
-    color: var(--background-color);
-    text-decoration: none;
-    padding: 10px 15px;
-    margin: 0 10px;
-    font-weight: bold;
-    transition: color 0.3s ease-in-out;
-}
-
-.container {
-    background-color: var(--background-color);
-    padding: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    width: 90%;
-    max-width: 900px;
-    margin: 0 auto;
-    transition: transform 0.3s ease-in-out;
-    backdrop-filter: blur(10px);
-    margin-top: 60px;
-    text-align: center;
-}
-
-h1 {
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-section {
-    padding: 50px 20px;
-    margin: 0 auto;
-    max-width: 800px;
-    text-align: center;
-}
-
-
-#intro, .form {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px 0;
-    text-align: center;
-    backdrop-filter: blur(5px);
-    transition: all 0.5s ease;
-}
-
-#imageArea {
-    text-align: center;
-    margin: 20px 0;
-}
-
-button {
-    background-color: var(--primary-color);
-    color: var(--background-color);
-    border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: 700;
-    display: block;
-    width: 100%;
-    margin-top: 20px;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-button:hover {
-    background-color: var(--primary-color);
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.submit-button button {
-    background-color: var(--primary-color);
-    margin-top: 10px;
-}
-
-#confirmationMessage {
-    background-color: #28a745;
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
-    margin: 20px 0;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-.responsive-image {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-#timer {
-    font-size: 1.2em;
-    background-color: var(--primary-color);
-    color: #fff;
-    padding: 6px 15px;
-    width: 600px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    margin: 20px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.object, .name {
-    width: 100%;
-    padding: 15px;
-    margin-top: 5px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    box-sizing: border-box;
-    font-size: 1em;
-}
-
-.object:focus, .name:focus {
-    border-color: #0056b3;
-}
-
-.panel {
-    padding: 0 18px;
-    display: none;
-    background-color: var(--primary-color);
-    overflow: hidden;
-    color: white;
-    text-align: justify;
-    font-size: 1em;
-}
-
-section h2 {
-    font-size: 1.5em;
-}
-
-section p {
-    font-size: 1em;
-    margin: 15px 0;
-}
-
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(-20px);}
-    to {opacity: 1; transform: translateY(0);}
-}
-
-@media (max-width: 768px) {
-    #navbar a {
-        margin: 0 10px;
-    }
-}
-
-@media (max-width: 600px) {
-    .container, section, #timer {
-        width: 100%;
-        box-sizing: border-box;
-    }
-}
-
-</style>         
+    <link rel="stylesheet" href="style.css">
+</head> <!-- Cierre de la etiqueta head añadido -->
 <body>
     <nav id="navbar">
         <ul>
             <li><a href="#test">Test</a></li>            
-            <li><a href="#instructions">Instructions</a></li>
         </ul>
     </nav>
 
-    <h1 id="main-title">Memory Test</h1>
+    <h1 id="main-title">The Human Memory</h1>
+    <h2>Looking for the limits of our memory</h2>
 
     <div class="container">
         <div id="intro">
-            <p>Hello! You are going to do a memory test to check the limits of your memory. Good Luck!</p>
-            <button id="startTest">Start Test</button>
+            <h2>Bienvenido al Proyecto de Investigación sobre la Memoria Humana</h2>
+            <p>Esta página web forma parte del Trabajo de investigación de <strong>Jana Pont</strong>, alumna de Bachillerato de la escuela <em>Jesuitas Sarriá – San Ignacio</em>, centrado en la <strong>memoria humana</strong>.</p>
+            
+            <h3>¿Qué encontrarás aquí?</h3>
+            <p>En esta página, te invitamos a participar en una serie de <strong>preguntas y pruebas de memoria</strong>. Los resultados se presentarán de manera <strong>agregada y anónima</strong>. Es importante que, una vez comenzados los ejercicios, completes el proceso sin pausas. La duración total estimada es de <strong>XX minutos</strong>.</p>
+            
+            <h3>Participa en la Segunda Fase</h3>
+            <p>El proyecto se complementa con una <strong>segunda fase</strong>, en la que los participantes seguirán unas pautas de entrenamiento diseñadas para <strong>mejorar su memoria</strong>. Si estás interesado en formar parte de esta fase, no dudes en contactarme a través del correo electrónico: <a href="mailto:humanmemorylimits@gmail.com">humanmemorylimits@gmail.com</a>.</p>
+            
+            <p><strong>¡Agradecemos tu participación!</strong></p>
+            <button id="startTest">Comenzar el Test</button>
         </div>
 
         <!-- Formulario para las preguntas iniciales -->
         <form id="initialQuestionForm" style="display:none;">
-            <h2>Previous Questions</h2> <!-- Título añadido aquí -->
-            <!-- Preguntas y respuestas aquí -->
-            <p>Select your gender</p>
-            <label><input type="radio" name="gender" value="man"> Man</label>
-            <label><input type="radio" name="gender" value="woman"> Woman</label>
-
-            <!-- Más preguntas si es necesario -->
-            <!-- Ejemplo de otra pregunta -->
-            <p>Select your age range</p>
-            <label><input type="radio" name="age" value="x-y">X-Y</label>
-            <label><input type="radio" name="age" value="z-w">Z-W</label> <!-- Cambiar value y texto para poner edades   -->
-
+            <h2>Antes de empezar los ejercicios de memoria, por favor contesta las siguientes preguntas</h2>
+        
+            <!-- Pregunta: Género -->
+            <div class="question-container">
+                <p class="question">¿Cuál es tu género?</p>
+                <div class="options">
+                    <label><input type="radio" name="gender" value="man"> Hombre</label>
+                    <label><input type="radio" name="gender" value="woman"> Mujer</label>
+                </div>
+            </div>
+        
+            <!-- Pregunta: Edad -->
+            <div class="question-container">
+                <p class="question">¿Cuál es tu edad?</p>
+                <div class="options">
+                    <label><input type="radio" name="age" value="less-15"> Menos de 15 años</label>
+                    <label><input type="radio" name="age" value="15-25"> Entre 15 y 25 años</label>
+                    <label><input type="radio" name="age" value="26-45"> Entre 26 y 45 años</label>
+                    <label><input type="radio" name="age" value="46-65"> Entre 46 y 65 años</label>
+                    <label><input type="radio" name="age" value="more-66"> Más de 66 años</label>
+                </div>
+            </div>
+        
+            <!-- Pregunta: Fumador -->
+            <div class="question-container">
+                <p class="question">¿Eres fumador?</p>
+                <div class="options">
+                    <label><input type="radio" name="smoker" value="yes"> Sí</label>
+                    <label><input type="radio" name="smoker" value="no"> No</label>
+                </div>
+            </div>
+        
+            <!-- Pregunta: Deporte -->
+            <div class="question-container">
+                <p class="question">¿Cuántas horas de deporte haces de media en la semana?</p>
+                <div class="options">
+                    <label><input type="radio" name="sport" value="0"> 0</label>
+                    <label><input type="radio" name="sport" value="1-5"> Entre 1 y 5 horas</label>
+                    <label><input type="radio" name="sport" value="6-10"> Entre 6 y 10 horas</label>
+                    <label><input type="radio" name="sport" value="more-10"> Más de 10 horas</label>
+                </div>
+            </div>
+        
+            <!-- Pregunta: Sueño -->
+            <div class="question-container">
+                <p class="question">¿Cuántas horas duermes de media en el día?</p>
+                <div class="options">
+                    <label><input type="radio" name="sleep" value="less-6"> Menos de 6 horas</label>
+                    <label><input type="radio" name="sleep" value="7-8"> Entre 7 y 8 horas</label>
+                    <label><input type="radio" name="sleep" value="more-8"> Más de 8 horas</label>
+                </div>
+            </div>
+        
+            <!-- Pregunta: Lectura -->
+            <div class="question-container">
+                <p class="question">¿Cuántas horas de lectura dedicas a la semana?</p>
+                <div class="options">
+                    <label><input type="radio" name="reading" value="less-2"> Menos de 2 horas</label>
+                    <label><input type="radio" name="reading" value="3-5"> Entre 3 y 5 horas</label>
+                    <label><input type="radio" name="reading" value="more-5"> Más de 5 horas</label>
+                </div>
+            </div>
+        
+            <!-- Pregunta: Idiomas -->
+            <div class="question-container">
+                <p class="question">¿Cuántos idiomas hablas de forma fluida?</p>
+                <div class="options">
+                    <label><input type="radio" name="languages" value="1"> 1</label>
+                    <label><input type="radio" name="languages" value="2"> 2</label>
+                    <label><input type="radio" name="languages" value="3"> 3</label>
+                    <label><input type="radio" name="languages" value="4"> 4</label>
+                    <label><input type="radio" name="languages" value="more-4"> Más de 4</label>
+                </div>
+            </div>
+        
+            <!-- Pregunta: Nivel Educativo -->
+            <div class="question-container">
+                <p class="question">¿Cuál es tu nivel educativo?</p>
+                <div class="options">
+                    <label><input type="radio" name="education" value="primary"> Primaria</label>
+                    <label><input type="radio" name="education" value="secondary"> Secundaria</label>
+                    <label><input type="radio" name="education" value="highschool"> Bachillerato</label>
+                    <label><input type="radio" name="education" value="university"> Universitario</label>
+                    <label><input type="radio" name="education" value="phd"> Doctorado</label>
+                </div>
+            </div>
+        
+            <!-- Pregunta: Uso de dispositivos -->
+            <div class="question-container">
+                <p class="question">¿Cuántas horas al día utilizas el móvil/tablet/videoconsola/otros dispositivos?</p>
+                <div class="options">
+                    <label><input type="radio" name="deviceUse" value="less-2"> Menos de 2 horas</label>
+                    <label><input type="radio" name="deviceUse" value="3-5"> Entre 3 y 5 horas</label>
+                    <label><input type="radio" name="deviceUse" value="more-6"> Más de 6 horas</label>
+                </div>
+            </div>
+        
             <div class="submit-button">
-                <button type="submit">Continue to Test</button>
+                <button type="submit">Empezar</button>
             </div>
         </form>
 
         <div id="imageArea" style="display:none;"></div>
         <div id="timer" style="display:none;">5</div>
+        <!-- Sección de preparación para memorizar imágenes -->
+        <div id="prepForMemoryTest" style="text-align:center; margin-top:20px; display:none;">
+            <p>Observa atentamente las siguientes imágenes. Dispones de XX segundos para memorizar tantas imágenes como puedas.</p>
+            <button id="beginMemorization">Empezar</button>
+        </div>
+
+        <!-- Área de la imagen actualizada para evitar duplicados -->
+        <div id="memoryImageArea" style="display:none; text-align:center; margin:20px 0;"></div>
 
         <!-- Formulario para las preguntas después de ver la imagen -->
         <form id="imageQuestionForm" style="display:none;">
-            <p>What was the predominant color in the image?</p>
-            <label><input type="radio" name="color" value="red"> Red</label>
-            <label><input type="radio" name="color" value="blue"> Blue</label>
-            <label><input type="radio" name="color" value="yellow"> Yellow</label>
-
-            <div class="question">
-                <p>Describe an object you remember from the image:</p>
-                <input type="text" id="object" class="object" name="object" placeholder="Type your answer here">
+            <div class="question2">
+                <p>Escribe el nombre de todas las imágenes que recuerdas de la página anterior sin importar el orden. Presiona el botón &lt;Siguiente&gt; cuando hayas terminado.</p>
+                <input type="text" id="ejercicio1" class="ejercicio1" name="ejercicio1" placeholder="Type your answer here">
             </div>
+            <button id="siguiente">Siguiente</button>
+        </form>
+        
+        <div id="prepForSecondImage" style="text-align:center; margin-top:20px; display:none;">
+            <p>Prepárate para observar la siguiente imagen. Tendrás un tiempo limitado para memorizarla antes de responder algunas preguntas.</p>
+            <button id="beginSecondMemorization">Empezar</button>
+        </div>
 
-            <div class="submit-button">
-                <button type="submit">Submit Answer</button>
+        <div id="newImageContainer" style="display:none;">
+            <img src="niños.jpg" alt="New Memory Test Image" class="responsive-image" style="width: 100%; max-width: 800px;" />
+        </div>
+
+        <form id="secondImageQuestions" style="display:none;">
+            <h2>Contesta las siguientes preguntas con relación a la imagen anterior (sólo una de las respuestas es correcta):</h2>
+            
+            <!-- Pregunta: ¿Cuántas personas aparecían en la imagen? -->
+            <div class="question-container">
+                <p class="question">¿Cuántas personas aparecían en la imagen?</p>
+                <div class="options">
+                    <label><input type="radio" name="peopleCount" value="6"> 6 personas</label>
+                    <label><input type="radio" name="peopleCount" value="7"> 7 personas</label>
+                    <label><input type="radio" name="peopleCount" value="8"> 8 personas</label>
+                    <label><input type="radio" name="peopleCount" value="5"> 5 personas</label>
+                </div>
+            </div>
+            
+            <!-- Pregunta: ¿Qué hora aproximada marcaba el reloj de la pared? -->
+            <div class="question-container">
+                <p class="question">¿Qué hora aproximada marcaba el reloj de la pared?</p>
+                <div class="options">
+                    <label><input type="radio" name="clockTime" value="noClock"> No había ningún reloj</label>
+                    <label><input type="radio" name="clockTime" value="6-10"> Las seis y diez minutos</label>
+                    <label><input type="radio" name="clockTime" value="6-45"> Las siete menos cuarto</label>
+                    <label><input type="radio" name="clockTime" value="1-50"> Las dos menos diez minutos</label>
+                </div>
+            </div>
+            
+            <!-- Pregunta: ¿Cuántas mochilas aparecían en la imagen? -->
+            <div class="question-container">
+                <p class="question">¿Cuántas mochilas aparecían en la imagen?</p>
+                <div class="options">
+                    <label><input type="radio" name="backpackCount" value="two"> Dos</label>
+                    <label><input type="radio" name="backpackCount" value="none"> Ninguna</label>
+                    <label><input type="radio" name="backpackCount" value="three"> Tres</label>
+                    <label><input type="radio" name="backpackCount" value="one"> Una</label>
+                </div>
+            </div>
+            
+            <!-- Pregunta: La alfombra del centro de la imagen era ... -->
+            <div class="question-container">
+                <p class="question">La alfombra del centro de la imagen era …</p>
+                <div class="options">
+                    <label><input type="radio" name="carpetColor" value="blue"> Azul</label>
+                    <label><input type="radio" name="carpetColor" value="stripes"> A rayas</label>
+                    <label><input type="radio" name="carpetColor" value="squares"> A cuadros</label>
+                    <label><input type="radio" name="carpetColor" value="green"> Verde</label>
+                </div>
+            </div>
+            
+            <!-- Pregunta: El niño de la gorra roja llevaba ... -->
+            <div class="question-container">
+                <p class="question">El niño de la gorra roja llevaba …</p>
+                <div class="options">
+                    <label><input type="radio" name="boyClothes" value="bluePants"> Pantalón azul</label>
+                    <label><input type="radio" name="boyClothes" value="greenShirt"> Camiseta verde</label>
+                    <label><input type="radio" name="boyClothes" value="orangeShoes"> Zapatos naranjas</label>
+                    <label><input type="radio" name="boyClothes" value="glasses"> Gafas</label>
+                </div>
+            </div>
+            
+            <!-- Pregunta: ¿Qué instrumentos aparecían en la imagen? -->
+            <div class="question-container">
+                <p class="question">¿Qué instrumentos aparecían en la imagen?</p>
+                <div class="options">
+                    <label><input type="radio" name="instruments" value="xylophoneDrumFlute"> Un xilófono, un tambor y una flauta</label>
+                    <label><input type="radio" name="instruments" value="drumXylophoneGuitar"> Un tambor, un xilófono y una guitarra</label>
+                    <label><input type="radio" name="instruments" value="xylophoneFluteGuitar"> Un xilófono, una flauta y una guitarra</label>
+                    <label><input type="radio" name="instruments" value="drumXylophone"> Un tambor y xilófono</label>
+                </div>
+            </div>
+        
+            <div class="submitAll">
+                <button type="submit" id="submitAll">Submit Answer</button>
                 <div id="loadingMessage" style="display:none;">Enviando respuestas...</div>
+
+                <div id="confirmationMessage" style="display:none;">
+                    <p>Your response has been submitted!</p>
             </div>
         </form>
 
-        <div id="confirmationMessage" style="display:none;">
-            <p>Your response has been submitted!</p>
-        </div>
+
+
     </div>
-
-    <section id="instructions">
-        <h2>Instructions</h2>
-        <p>[Detailed instructions on how to take the test]</p>
-    </section>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-    var startTestButton = document.getElementById('startTest');
-    var introElement = document.getElementById('intro');
-    var timerElement = document.getElementById('timer');
-    var imageArea = document.getElementById('imageArea');
-    var initialQuestionForm = document.getElementById('initialQuestionForm');
-    var imageQuestionForm = document.getElementById('imageQuestionForm');
-    var confirmationMessage = document.getElementById('confirmationMessage');
-    var loadingMessage = document.getElementById('loadingMessage');
-
-    var formData = {}; // Objeto para almacenar los datos
-    var uniqueId = new Date().getTime(); // Identificador único
-
-    // Manejo de la navegación
-    const navbarLinks = document.querySelectorAll('#navbar a');
-    navbarLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            const section = document.querySelector(this.getAttribute('href'));
-            section.scrollIntoView({ behavior: 'smooth' });
-        });
-    });
-
-    // Inicia el test
-    if (startTestButton) {
-        startTestButton.addEventListener('click', function() {
-            introElement.style.display = 'none';
-            startTestButton.style.display = 'none';
-            initialQuestionForm.style.display = 'block';
-        });
-    }
-
-    // Manejo del envío del formulario inicial
-    if (initialQuestionForm) {
-        initialQuestionForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            new FormData(initialQuestionForm).forEach((value, key) => {
-                formData[key] = value;
-            });
-            formData["uniqueId"] = uniqueId;
-
-            // sendInitialDataToGoogleSheet(initialFormData); // Removido
-
-            initialQuestionForm.style.display = 'none';
-            imageArea.style.display = 'block';
-            timerElement.style.display = 'block';
-            imageArea.innerHTML = '<img src="images/pruebamemoria.jpg" alt="Memory Test Image" class="responsive-image" />';
-
-            var timeLeft = 5;
-            var timerInterval = setInterval(function() {
-                timerElement.innerText = timeLeft;
-                if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    timerElement.style.display = 'none';
-                    imageArea.style.display = 'none';
-                    imageQuestionForm.style.display = 'block';
-                }
-                timeLeft -= 1;
-            }, 1000);
-        });
-    }
-
-    // Manejo del envío del formulario de la imagen
-    if (imageQuestionForm) {
-        imageQuestionForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            new FormData(imageQuestionForm).forEach((value, key) => {
-                formData[key] = value;
-            });
-
-            sendFormDataToGoogleSheet(formData);
-        });
-    }
-
-    function sendFormDataToGoogleSheet(data) {
-        loadingMessage.style.display = 'block';
-        fetch('https://script.google.com/macros/s/AKfycby8uZhweB25w1S8sr8oQJSySMxBItKA9evnbaXpohFVDaCXIsEmQNoRy_DOWULMNLiJ/exec', {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }).then(response => {
-            console.log('Data sent to Google Sheet');
-            confirmationMessage.style.display = 'block';
-            imageQuestionForm.style.display = 'none';
-        }).catch(error => {
-            console.error('Error:', error);
-        }).finally(() => {
-            loadingMessage.style.display = 'none';
-        });
-    }
-});
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
