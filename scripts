@@ -1,0 +1,38 @@
+function doPost(e) {
+    // Verifica si e.postData está definido
+    if (!e.postData) {
+        // Devuelve un error si postData no existe
+        return ContentService.createTextOutput(JSON.stringify({"result": "error", "error": "No postData"}))
+            .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = JSON.parse(e.postData.contents); // Esta línea permanece igual
+    var uniqueId = data.uniqueId; // Esta línea permanece igual
+
+    // Buscar la fila existente con el mismo ID único
+    var existingRow = findRowByUniqueId(sheet, uniqueId);
+    if (existingRow != -1) {
+        // Actualizar la fila existente
+        var range = sheet.getRange(existingRow, 1, 1, sheet.getLastColumn());
+        range.setValues([[data.gender, data.age, data.smoker, data.sport, data.sleep, data.reading, data.languages, data.education, data.deviceUse, data.ejercicio1]]); // ajusta los campos según sea necesario
+    } else {
+        // Insertar una nueva fila
+        sheet.appendRow([data.gender, data.age, data.smoker, data.sport, data.sleep, data.reading, data.languages, data.education, data.deviceUse, data.ejercicio1]);
+    }
+    
+    // Devolver una respuesta JSON al cliente
+    return ContentService.createTextOutput(JSON.stringify({"result": "success"}))
+        .setMimeType(ContentService.MimeType.JSON);
+}
+
+// Función para buscar una fila por ID único
+function findRowByUniqueId(sheet, uniqueId) {
+    var data = sheet.getDataRange().getValues();
+    for (var i = 0; i < data.length; i++) {
+        if (data[i][0] == uniqueId) { // Asumiendo que el ID único está en la primera columna
+            return i + 1; // Las filas en Apps Script comienzan en 1, no en 0
+        }
+    }
+    return -1;
+}
