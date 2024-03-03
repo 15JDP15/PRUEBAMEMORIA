@@ -105,7 +105,7 @@ function f_pruebamemoria()
     // Funció que envia les dades a Google Sheets
     function sendFormDataToGoogleSheet(data) {
         loadingMessage.style.display = 'block';
-        fetch('https://script.google.com/macros/s/AKfycbx0fXig8S9Ez93lmCehtMFzilWWqhvhzQP3Uzzs29Wixh8A2ydxasIN0gZrBNwGM8p4/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbyFJCqxqZGEvorTMObzJ4LYm6TwjTjaLUwBoFhm2d1CxfPba6UTf4XhM7Xg6f0ColZa/exec', {
             method: 'POST',
             mode: 'no-cors',
             headers: {
