@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
+function f_pruebamemoria() 
+{
     // 1. Inicialización de variables y elementos del DOM
     var startTestButton = document.getElementById('startTest');
     var introElement = document.getElementById('intro');
@@ -10,53 +11,37 @@ document.addEventListener('DOMContentLoaded', function() {
     var imageQuestionForm = document.getElementById('imageQuestionForm');
     var confirmationMessage = document.getElementById('confirmationMessage');
     var loadingMessage = document.getElementById('loadingMessage');
-    var siguienteButton = document.getElementById('siguiente');
     var prepForSecondImage = document.getElementById('prepForSecondImage');
     var beginSecondMemorizationButton = document.getElementById('beginSecondMemorization');
     var newImageContainer = document.getElementById('newImageContainer');
     var formData = {};
     var uniqueId = new Date().getTime();
 
-    // Supongamos que tienes varios formularios: formulario1, formulario2, etc.
-    // Asegúrate de tener un manejador de evento 'submit' para cada uno que acumule datos en `formData`
+    // Ocultar inicialmente la sección de preparación y el área de imagen
+    prepForMemoryTest.style.display = 'none';
+    imageArea.style.display = 'none';
+    confirmationMessage.style.display = 'none';
     
-    document.querySelectorAll('form').forEach(function(form) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-            new FormData(form).forEach((value, key) => {
-                formData[key] = (formData[key] || []).concat(value); // Acumula valores, permite múltiples respuestas para una misma clave
-            });
-            // Opcional: ocultar el formulario actual y mostrar el siguiente
-        });
-    });
+    // --- FORMULARI initialQuestionForm ---
 
-    // Botón para enviar todos los datos acumulados
-    document.getElementById('submitAll').addEventListener('click', function(event) {
+    initialQuestionForm.addEventListener('submit', function(event) {
         event.preventDefault();
+        new FormData(initialQuestionForm).forEach((value, key) => {
+            formData[key] = value;
+        });
+        formData["step"] = "initialQuestionForm";
+        formData["uniqueId"] = uniqueId;
         sendFormDataToGoogleSheet(formData);
+        initialQuestionForm.style.display = 'none';
+        prepForMemoryTest.style.display = 'block';
     });
 
-    function sendFormDataToGoogleSheet(data) {
-        loadingMessage.style.display = 'block';
-        fetch('https://script.google.com/macros/s/AKfycby8uZhweB25w1S8sr8oQJSySMxBItKA9evnbaXpohFVDaCXIsEmQNoRy_DOWULMNLiJ/exec', {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }).then(response => {
-            console.log('Data sent to Google Sheet');
-            confirmationMessage.style.display = 'block';
-            imageQuestionForm.style.display = 'none';
-        }).catch(error => {
-            console.error('Error:', error);
-        }).finally(() => {
-            loadingMessage.style.display = 'none';
-        });
-    }
+    startTestButton.addEventListener('click', function() {
+        introElement.style.display = 'none';
+        startTestButton.style.display = 'none';
+        initialQuestionForm.style.display = 'block';
+    });
 
-    // 2. Definición de funciones
     function startMemoryTest() {
         var timeLeft = 5; // Ajusta este valor al tiempo deseado
         var timerInterval = setInterval(function() {
@@ -71,29 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
- 
-
-    // 3. Configuración de eventos y lógica de interacción
-    // Ocultar inicialmente la sección de preparación y el área de imagen
-    prepForMemoryTest.style.display = 'none';
-    imageArea.style.display = 'none';
-
-    startTestButton.addEventListener('click', function() {
-        introElement.style.display = 'none';
-        startTestButton.style.display = 'none';
-        initialQuestionForm.style.display = 'block';
-    });
-
-    initialQuestionForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        new FormData(initialQuestionForm).forEach((value, key) => {
-            formData[key] = value;
-        });
-        formData["uniqueId"] = uniqueId;
-        initialQuestionForm.style.display = 'none';
-        prepForMemoryTest.style.display = 'block';
-    });
-
     beginMemorizationButton.addEventListener('click', function() {
         prepForMemoryTest.style.display = 'none';
         imageArea.style.display = 'block';
@@ -102,19 +64,18 @@ document.addEventListener('DOMContentLoaded', function() {
         startMemoryTest();
     });
 
+    // --- FORMULARI imageQuestionForm ---
     imageQuestionForm.addEventListener('submit', function(event) {
         event.preventDefault();
         new FormData(imageQuestionForm).forEach((value, key) => {
             formData[key] = value;
         });
+        formData["step"] = "imageQuestionForm";
         sendFormDataToGoogleSheet(formData);
-    });
-
-    siguienteButton.addEventListener('click', function(event) {
-        event.preventDefault();
         imageQuestionForm.style.display = 'none';
         prepForSecondImage.style.display = 'block';
     });
+
 
     beginSecondMemorizationButton.addEventListener('click', function() {
         prepForSecondImage.style.display = 'none'; // Oculta el mensaje de preparación
@@ -127,8 +88,40 @@ document.addEventListener('DOMContentLoaded', function() {
     
     });
     
+    // --- FORMULARI secondImageQuestions ---
+    secondImageQuestions.addEventListener('submit', function(event) {
+        event.preventDefault();
+        new FormData(secondImageQuestions).forEach((value, key) => {
+            formData[key] = value;
+        });
+        formData["step"] = "secondImageQuestions";
+        sendFormDataToGoogleSheet(formData);
+        confirmationMessage.style.display = 'block';
+        secondImageQuestions.style.display = 'none';
+    });
 
 
+    // --- Enviament de dades al Backend ---
+    // Funció que envia les dades a Google Sheets
+    function sendFormDataToGoogleSheet(data) {
+        loadingMessage.style.display = 'block';
+        fetch('https://script.google.com/macros/s/AKfycby8uZhweB25w1S8sr8oQJSySMxBItKA9evnbaXpohFVDaCXIsEmQNoRy_DOWULMNLiJ/exec', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(response => {
+            console.log('Data sent to Google Sheet');            
+        }).catch(error => {
+            console.error('Error:', error);
+        }).finally(() => {
+            loadingMessage.style.display = 'none';
+        });
+    }
+    
+    // Altres funcions
     // Manejo de la navegación
     const navbarLinks = document.querySelectorAll('#navbar a');
     navbarLinks.forEach(link => {
@@ -138,4 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
             section.scrollIntoView({ behavior: 'smooth' });
         });
     });
-});
+}
+
+document.addEventListener('DOMContentLoaded', f_pruebamemoria);
