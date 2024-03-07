@@ -277,13 +277,8 @@ animation: fadeIn 0.5s ease-in-out;
 }
 
 .responsive-image {
-max-width: 100%;
-max-width: 800px;
-width: 1000;
-height: 100000000000000;
-height: auto;
-display: block;
-margin: auto; /* Para centrar la imagen */
+    width: 100%;
+    height: auto;
 }
 
 #timer {
