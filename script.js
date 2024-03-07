@@ -37,6 +37,7 @@ function f_pruebamemoria()
         introElement.style.display = 'none';
         startTestButton.style.display = 'none';
         initialQuestionForm.style.display = 'block';
+        NavigateToTitol();
     });
 
     function startMemoryTest() {
@@ -216,6 +217,13 @@ function f_pruebamemoria()
             section.scrollIntoView({ behavior: 'smooth' });
         });
     });
+
+    // this function ensures that title is visible
+    function NavigateToTitol()
+    {
+        
+        document.getElementById("main-title").scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 document.addEventListener('DOMContentLoaded', f_pruebamemoria);
