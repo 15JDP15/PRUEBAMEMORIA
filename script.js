@@ -102,12 +102,10 @@ function f_pruebamemoria()
         formData["step"] = "secondImageQuestions";
         sendFormDataToGoogleSheet(formData);
         secondImageQuestions.style.display = 'none';
-    });
-
-    document.getElementById('toThirdExercise').addEventListener('click', function() {
         document.getElementById('secondImageQuestions').style.display = 'none';
         document.getElementById('prepForThirdImage').style.display = 'block';
     });
+
     
     document.getElementById('beginThirdMemorization').addEventListener('click', function() {
         // Aquí puedes replicar la lógica de temporizador o visualización de imágenes
