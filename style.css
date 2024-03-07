@@ -17,6 +17,8 @@ line-height: 1.6;
 margin: 0;
 padding: 10px;
 text-align: justify;
+padding-bottom: 100px; /* Espacio adicional en la parte inferior para permitir que la imagen sea visible en dispositivos móviles */
+
 }
 
 #navbar {
@@ -30,8 +32,6 @@ top: 0;
 z-index: 1000;
 }
 
-
-
 .question-container {
 margin-bottom: 20px; /* Espacio entre preguntas */
 text-align: justify; /* Justifica el texto de la pregunta y opciones */
@@ -39,8 +39,10 @@ text-align: justify; /* Justifica el texto de la pregunta y opciones */
 
 .question {
     margin-bottom: 10px;
-    font-weight: bold;
+    font-weight: 500;
     color: var(--text-color); /* Cambiado a color de texto */
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.1); /* Ajusta según sea necesario */
+
 }
 
 .options label {
@@ -66,12 +68,21 @@ margin-bottom: 10px;
 
 h2 {
 /* Estilos para el subtítulo */
-font-size: 1.5rem; /* Tamaño de fuente más pequeño que el título principal */
-color: var(--primary-color); /* Color más claro que el título principal */
+font-size: 1.3rem; /* Tamaño de fuente más pequeño que el título principal */
+color: black; /* Color más claro que el título principal */
 margin-top: 0; /* Elimina espacio adicional arriba del subtítulo */
-text-align: center;
+margin: 0;
+text-align: justify;
+font-weight: normal;
 }
 
+h3 {
+    /* Estilos para el subtítulo */
+    font-size: 1.5rem; /* Tamaño de fuente más pequeño que el título principal */
+    color: var(--primary-color); /* Color más claro que el título principal */
+    margin-top: 0; /* Elimina espacio adicional arriba del subtítulo */
+    text-align: center;
+    }
 
 #navbar {
 background-color: var(--primary-color);
@@ -130,7 +141,7 @@ max-width: 800px;
 text-align: center;
 }
 
-.ejercicio1, .name {
+.ejercicio1 {
     width: 100%;
     padding: 15px;
     margin-top: 5px;
@@ -142,20 +153,66 @@ text-align: center;
     font-size: 1em;
 }
 
+.ejercicio3 {
+    width: 100%;
+    padding: 15px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    box-sizing: border-box;
+    font-size: 1em;
+}
 
+.ejercicio4  {
+    width: 100%;
+    padding: 15px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    box-sizing: border-box;
+    font-size: 1em;
+}
 
+.ejercicio5  {
+    width: 100%;
+    padding: 15px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.ejercicio6  {
+    width: 100%;
+    padding: 15px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    box-sizing: border-box;
+    font-size: 1em;
+}
     
 
-#intro, .form {
-background-color: var(--background-color);
-color: var(--text-color);
-padding: 20px;
-border-radius: 10px;
-margin: 20px 0;
-text-align: justify;
-backdrop-filter: blur(5px);
-transition: all 0.5s ease;
+#intro, .form, #sixthExerciseContainer {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: justify;
+    backdrop-filter: blur(5px);
+    transition: all 0.5s ease;
 }
+
 
 #intro > h2 {
 text-align: justify;
@@ -186,6 +243,7 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 p {
 color: black;
 text-align: justify;
+font-weight: normal;
 }
 
 
@@ -222,10 +280,10 @@ animation: fadeIn 0.5s ease-in-out;
 max-width: 100%;
 max-width: 800px;
 width: 1000;
-height: 1000;
+height: 100000000000000;
 height: auto;
 display: block;
-margin: 0 auto;
+margin: auto; /* Para centrar la imagen */
 }
 
 #timer {
@@ -276,7 +334,58 @@ font-size: 1.5em;
 section p {
 font-size: 1em;
 margin: 15px 0;
+font-weight: normal;
 }
+
+
+.submitAll {
+    text-align: center; /* Centra el botón dentro del formulario */
+}
+
+.submitAll button {
+    display: inline-block; /* Permite ajustar mejor el margen y el posicionamiento */
+    /* Resto de estilos del botón */
+}
+
+#skipAudio {
+    display: inline-block; /* O 'block' si prefieres que ocupe su propia línea */
+    margin-top: 10px; /* Ajusta el margen según necesidad */
+    /* Otros estilos según tu diseño */
+}
+
+#fifthExerciseContainer, #sixthExerciseContainer {
+    text-align: center;
+    margin-top: 20px;
+    display: none; /* Asegúrate de ajustar esto con JavaScript y no directamente en CSS para mantener la funcionalidad */
+    overflow: auto; /* Ajusta según necesidad, puede ser 'hidden', 'scroll', etc. */
+    /* Añade un ancho mínimo o máximo según lo necesites */
+    max-width: 600px; /* Ejemplo */
+    margin: auto; /* Centrar el contenedor si es necesario */
+}
+
+#fifthExerciseQuestions, #sixthExerciseContainer {
+    overflow: auto; /* Asegura que el contenido que desborde se maneje con barras de desplazamiento */
+    margin: auto;
+    padding: 20px;
+    max-width: 800px; /* o un valor que se ajuste a tu diseño */
+    display: block;
+}
+
+#fifthExerciseQuestions h1, #sixthExerciseContainer button {
+    margin: 10px 0; /* Ajusta según necesidad, reduce o elimina el margen si es necesario */
+}
+
+#fifthExerciseQuestions, #sixthExerciseContainer {
+    padding: 20px; /* Asegura un espacio adecuado dentro del contenedor */
+    /* Resto de estilos */
+}
+
+#fifthExerciseQuestions, #sixthExerciseContainer {
+    width: 100%; /* O un ancho fijo si se prefiere */
+    box-sizing: border-box; /* Asegura que el padding y border se incluyan en el cálculo del ancho */
+    /* Resto de estilos */
+}
+
 
 @keyframes fadeIn {
 from {opacity: 0; transform: translateY(-20px);}
