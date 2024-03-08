@@ -120,12 +120,14 @@ function f_pruebamemoria()
         }, 3000); // Ajusta este tiempo según sea necesario
     });
     
-    document.getElementById('toFourthExercise').addEventListener('click', function() {
+    document.getElementById('toFourthExercise').addEventListener('click', function(event) {
+        event.preventDefault(); // Evitar la acción predeterminada de recargar la página
         document.getElementById('prepForThirdImage').style.display = 'none';
         document.getElementById('thirdImageContainer').style.display = 'none';
         document.getElementById('thirdImageQuestions').style.display = 'none';
         document.getElementById('prepForFourthImage').style.display = 'block';
     });
+
     
     document.getElementById('beginFourthMemorization').addEventListener('click', function() {
         document.getElementById('prepForFourthImage').style.display = 'none'; // Oculta el texto de preparación
