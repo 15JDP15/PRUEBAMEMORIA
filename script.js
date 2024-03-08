@@ -183,6 +183,7 @@ function f_pruebamemoria()
     
     document.getElementById('toSixthExercise').addEventListener('click', function() {
         // Ocultar formulario del ejercicio 5
+        event.preventDefault(); // Evitar la acción predeterminada de recargar la página
         document.getElementById('fifthExerciseQuestions').style.display = 'none';
         document.getElementById('sixthExerciseContainer').style.display = 'block';
     });
