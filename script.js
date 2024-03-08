@@ -170,12 +170,16 @@ function f_pruebamemoria()
         document.getElementById('fifthExerciseQuestions').style.display = 'block';
     }
     
-    document.getElementById('toFifthExercise').addEventListener('click', function() {
+    document.getElementById('toFifthExercise').addEventListener('click', function(event) {
         event.preventDefault(); // Evitar la acción predeterminada de recargar la página
         document.getElementById('fourthImageQuestions').style.display = 'none'; // Ocultar formulario del ejercicio 4
         document.getElementById('fifthExerciseContainer').style.display = 'block'; // Mostrar contenedor del ejercicio 5
         setupAudio();
+        
+        // Agregar la navegación manual aquí
+        document.getElementById('fifthExerciseQuestions').scrollIntoView({ behavior: 'smooth' });
     });
+
     
     document.getElementById('toSixthExercise').addEventListener('click', function() {
         // Ocultar formulario del ejercicio 5
