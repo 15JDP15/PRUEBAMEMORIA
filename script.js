@@ -171,6 +171,7 @@ function f_pruebamemoria()
     }
     
     document.getElementById('toFifthExercise').addEventListener('click', function() {
+        event.preventDefault(); // Evitar la acción predeterminada de recargar la página
         document.getElementById('fourthImageQuestions').style.display = 'none'; // Ocultar formulario del ejercicio 4
         document.getElementById('fifthExerciseContainer').style.display = 'block'; // Mostrar contenedor del ejercicio 5
         setupAudio();
