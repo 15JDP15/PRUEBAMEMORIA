@@ -151,7 +151,8 @@
                 <h2>Escribe el nombre de todas las imágenes que recuerdas de la página anterior <strong>sin importar el orden.</strong></h2>
                 <input type="text" id="ejercicio1" class="ejercicio1" name="ejercicio1" placeholder="Escribe aquí tu respuesta">
             </div>
-            <button type="submit" id="siguiente">Siguiente</button>
+            <div class="submit-button">
+            <button type="submit">Siguiente</button>
         </form>
         
         <div id="prepForSecondImage" style="text-align:center; margin-top:20px; display:none;">
@@ -232,8 +233,8 @@
                 </div>
             </div>
         
-            <div class="submitAll">
-                <button type="submit" id="toThirdExercise">Siguiente</button>
+            <div class="submit-button">
+                <button type="submit">Siguiente</button>
 
             </div>
         </form>
@@ -250,7 +251,8 @@
         <form id="thirdImageQuestions" style="display:none;">
             <h2>Escribe las palabras que recuerdas de la página anterior <strong> sin importar el orden. </strong></h2>
             <input type="text" id="ejercicio3" class="ejercicio3" name="ejercicio3" placeholder="Escribe aquí tu respuesta">            
-            <button type="submit" id="toFourthExercise">Siguiente</button>
+            <div class="submit-button">
+                <button type="submit">Siguiente</button>
 
         </form>
 
@@ -268,7 +270,7 @@
         <form id="fourthImageQuestions" style="display:none;">
             <h2>Escribe los números que recuerdas de la página anterior<strong> en el orden correcto.</strong></h2>
             <input type="text" id="ejercicio4" class="ejercicio4" name="ejercicio4" placeholder="Escribe aquí tu respuesta">   
-            <div class="submitAll">
+            <div class="submit-button">
                 <button type="submit" id="toFifthExercise">Siguiente</button> <!-- O "Enviar" si es el último ejercicio -->
             </div>
             </form>
@@ -285,13 +287,15 @@
             <form id="fifthExerciseQuestions" style="display:none;">
                 <h2>Escribe las palabras que recuerdas de la página anterior <strong> sin importar el orden. </strong></h2>
                     <input type="text" id="ejercicio5" class="ejercicio5" name="ejercicio5" placeholder="Escribe aquí tu respuesta">   
+                    <div class="submit-button">
                     <button type="submit" id="toSixthExercise">Siguiente</button>
             </form> <!-- Cierre del formulario del quinto ejercicio -->
     
             <div id="sixthExerciseContainer" style="text-align:center; margin-top:20px; display:none;">
                 <h2>Escribe el nombre de las imágenes que recuerdas <strong>del primer ejercicio</strong> que has realizado al empezar (la primera era la imagen de un helado)</h2>
-                <input type="text" id="ejercicio6" class="ejercicio6" name="ejercicio6" placeholder="Escribe aquí tu respuesta">   
-                <button id="submitSixthExercise">Enviar</button>
+                <input type="text" id="ejercicio6" class="ejercicio6" name="ejercicio6" placeholder="Escribe aquí tu respuesta">  
+                <div class="submit-button">
+                <button type="submit"id="submitSixthExercise">Enviar</button>
             </div>
 
             <div id="gratitudeMessage" style="text-align:center; display:none;">
