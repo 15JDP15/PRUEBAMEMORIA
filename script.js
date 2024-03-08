@@ -186,6 +186,8 @@ function f_pruebamemoria()
         event.preventDefault(); // Evitar la acción predeterminada de recargar la página
         document.getElementById('fifthExerciseQuestions').style.display = 'none';
         document.getElementById('sixthExerciseContainer').style.display = 'block';
+        document.getElementById('sixthExerciseContainer').scrollIntoView({ behavior: 'smooth' });
+
     });
 
     document.getElementById('submitSixthExercise').addEventListener('click', function() {
