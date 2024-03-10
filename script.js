@@ -37,7 +37,6 @@ function f_pruebamemoria()
         introElement.style.display = 'none';
         startTestButton.style.display = 'none';
         initialQuestionForm.style.display = 'block';
-        NavigateToTitol();
     });
 
     function startMemoryTest() {
@@ -103,10 +102,12 @@ function f_pruebamemoria()
         formData["step"] = "secondImageQuestions";
         sendFormDataToGoogleSheet(formData);
         secondImageQuestions.style.display = 'none';
+    });
+
+    document.getElementById('toThirdExercise').addEventListener('click', function() {
         document.getElementById('secondImageQuestions').style.display = 'none';
         document.getElementById('prepForThirdImage').style.display = 'block';
     });
-
     
     document.getElementById('beginThirdMemorization').addEventListener('click', function() {
         // Aquí puedes replicar la lógica de temporizador o visualización de imágenes
@@ -120,14 +121,13 @@ function f_pruebamemoria()
         }, 3000); // Ajusta este tiempo según sea necesario
     });
     
-    document.getElementById('toFourthExercise').addEventListener('click', function(event) {
-        event.preventDefault(); // Evitar la acción predeterminada de recargar la página
+    document.getElementById('toFourthExercise').addEventListener('click', function() {
+        event.preventDefault();
         document.getElementById('prepForThirdImage').style.display = 'none';
         document.getElementById('thirdImageContainer').style.display = 'none';
         document.getElementById('thirdImageQuestions').style.display = 'none';
         document.getElementById('prepForFourthImage').style.display = 'block';
     });
-
     
     document.getElementById('beginFourthMemorization').addEventListener('click', function() {
         document.getElementById('prepForFourthImage').style.display = 'none'; // Oculta el texto de preparación
@@ -170,24 +170,17 @@ function f_pruebamemoria()
         document.getElementById('fifthExerciseQuestions').style.display = 'block';
     }
     
-    document.getElementById('toFifthExercise').addEventListener('click', function(event) {
-        event.preventDefault(); // Evitar la acción predeterminada de recargar la página
+    document.getElementById('toFifthExercise').addEventListener('click', function() {
+        event.preventDefault();
         document.getElementById('fourthImageQuestions').style.display = 'none'; // Ocultar formulario del ejercicio 4
         document.getElementById('fifthExerciseContainer').style.display = 'block'; // Mostrar contenedor del ejercicio 5
         setupAudio();
-        
-        // Agregar la navegación manual aquí
-        document.getElementById('fifthExerciseQuestions').scrollIntoView({ behavior: 'smooth' });
     });
-
     
     document.getElementById('toSixthExercise').addEventListener('click', function() {
-        // Ocultar formulario del ejercicio 5
-        event.preventDefault(); // Evitar la acción predeterminada de recargar la página
+        event.preventDefault();
         document.getElementById('fifthExerciseQuestions').style.display = 'none';
         document.getElementById('sixthExerciseContainer').style.display = 'block';
-        document.getElementById('sixthExerciseContainer').scrollIntoView({ behavior: 'smooth' });
-
     });
 
     document.getElementById('submitSixthExercise').addEventListener('click', function() {
@@ -200,7 +193,7 @@ function f_pruebamemoria()
     // --- Enviament de dades al Backend ---
     // Funció que envia les dades a Google Sheets
     function sendFormDataToGoogleSheet(data) {
-        fetch('https://script.google.com/macros/s/AKfycbyFJCqxqZGEvorTMObzJ4LYm6TwjTjaLUwBoFhm2d1CxfPba6UTf4XhM7Xg6f0ColZa/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbxEKNTaaYja2P8pKOaftoGKEjESQbDO7DrVa_4MlWM0hPrW86uVWWqBniA8PrxZjFTr/exec', {
             method: 'POST',
             mode: 'no-cors',
             headers: {
@@ -225,13 +218,6 @@ function f_pruebamemoria()
             section.scrollIntoView({ behavior: 'smooth' });
         });
     });
-
-    // this function ensures that title is visible
-    function NavigateToTitol()
-    {
-        
-        document.getElementById("main-title").scrollIntoView({ behavior: 'smooth' });
-    }
 }
 
 document.addEventListener('DOMContentLoaded', f_pruebamemoria);
