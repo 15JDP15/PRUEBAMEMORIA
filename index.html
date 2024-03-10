@@ -142,17 +142,14 @@
             <button id="beginMemorization">Empezar</button>
         </div>
 
-        <!-- Área de la imagen actualizada para evitar duplicados -->
         <div id="memoryImageArea" style="display:none; text-align:center; margin:20px 0;"></div>
 
-        <!-- Formulario para las preguntas después de ver la imagen -->
         <form id="imageQuestionForm" style="display:none;">
             <div class="question2">
                 <h2>Escribe el nombre de todas las imágenes que recuerdas de la página anterior <strong>sin importar el orden.</strong></h2>
                 <input type="text" id="ejercicio1" class="ejercicio1" name="ejercicio1" placeholder="Escribe aquí tu respuesta">
             </div>
-            <div class="submit-button">
-            <button type="submit">Siguiente</button>
+            <button type="submit" id="siguiente">Siguiente</button>
         </form>
         
         <div id="prepForSecondImage" style="text-align:center; margin-top:20px; display:none;">
@@ -166,8 +163,6 @@
 
         <form id="secondImageQuestions" style="display:none;">
             <h2>Contesta las siguientes preguntas con relación a la imagen anterior (sólo una de las respuestas es correcta):</h2>
-            
-            <!-- Pregunta: ¿Cuántas personas aparecían en la imagen? -->
             <div class="question-container">
                 <p class="question">¿Cuántas personas aparecían en la imagen?</p>
                 <div class="options">
@@ -178,7 +173,6 @@
                 </div>
             </div>
             
-            <!-- Pregunta: ¿Qué hora aproximada marcaba el reloj de la pared? -->
             <div class="question-container">
                 <p class="question">¿Qué hora aproximada marcaba el reloj de la pared?</p>
                 <div class="options">
@@ -189,7 +183,7 @@
                 </div>
             </div>
             
-            <!-- Pregunta: ¿Cuántas mochilas aparecían en la imagen? -->
+            
             <div class="question-container">
                 <p class="question">¿Cuántas mochilas aparecían en la imagen?</p>
                 <div class="options">
@@ -200,7 +194,6 @@
                 </div>
             </div>
             
-            <!-- Pregunta: La alfombra del centro de la imagen era ... -->
             <div class="question-container">
                 <p class="question">La alfombra del centro de la imagen era …</p>
                 <div class="options">
@@ -211,7 +204,6 @@
                 </div>
             </div>
             
-            <!-- Pregunta: El niño de la gorra roja llevaba ... -->
             <div class="question-container">
                 <p class="question">El niño de la gorra roja llevaba …</p>
                 <div class="options">
@@ -222,7 +214,6 @@
                 </div>
             </div>
             
-            <!-- Pregunta: ¿Qué instrumentos aparecían en la imagen? -->
             <div class="question-container">
                 <p class="question">¿Qué instrumentos aparecían en la imagen?</p>
                 <div class="options">
@@ -233,8 +224,8 @@
                 </div>
             </div>
         
-            <div class="submit-button">
-                <button type="submit">Siguiente</button>
+            <div class="submitAll">
+                <button type="submit" id="toThirdExercise">Siguiente</button>
 
             </div>
         </form>
@@ -250,9 +241,9 @@
         
         <form id="thirdImageQuestions" style="display:none;">
             <h2>Escribe las palabras que recuerdas de la página anterior <strong> sin importar el orden. </strong></h2>
-            <input type="text" id="ejercicio3" class="ejercicio3" name="ejercicio3" placeholder="Escribe aquí tu respuesta">            
-            <div class="submit-button">
-                <button type="submit">Siguiente</button>
+            <input type="text" id="ejercicio3" class="ejercicio3" name="ejercicio3" placeholder="Escribe aquí tu respuesta">           
+             
+            <button type="submit" id="toFourthExercise">Siguiente</button>
 
         </form>
 
@@ -270,7 +261,7 @@
         <form id="fourthImageQuestions" style="display:none;">
             <h2>Escribe los números que recuerdas de la página anterior<strong> en el orden correcto.</strong></h2>
             <input type="text" id="ejercicio4" class="ejercicio4" name="ejercicio4" placeholder="Escribe aquí tu respuesta">   
-            <div class="submit-button">
+            <div class="submitAll">
                 <button type="submit" id="toFifthExercise">Siguiente</button> <!-- O "Enviar" si es el último ejercicio -->
             </div>
             </form>
@@ -287,27 +278,20 @@
             <form id="fifthExerciseQuestions" style="display:none;">
                 <h2>Escribe las palabras que recuerdas de la página anterior <strong> sin importar el orden. </strong></h2>
                     <input type="text" id="ejercicio5" class="ejercicio5" name="ejercicio5" placeholder="Escribe aquí tu respuesta">   
-                    <div class="submit-button">
                     <button type="submit" id="toSixthExercise">Siguiente</button>
             </form> <!-- Cierre del formulario del quinto ejercicio -->
     
             <div id="sixthExerciseContainer" style="text-align:center; margin-top:20px; display:none;">
-                <h2>Escribe el nombre de las imágenes que recuerdas <strong>del primer ejercicio</strong> que has realizado al empezar (la primera era la imagen de un helado)</h2>
-                <input type="text" id="ejercicio6" class="ejercicio6" name="ejercicio6" placeholder="Escribe aquí tu respuesta">  
-                <div class="submit-button">
-                <button type="submit"id="submitSixthExercise">Enviar</button>
+                <h2>Escribe el nombre de las imágenes que recuerdas del primer ejercicio que has realizado al empezar (la primera era la imagen de un helado)</h2>
+                <input type="text" id="ejercicio6" class="ejercicio6" name="ejercicio6" placeholder="Escribe aquí tu respuesta">   
+                <button type="submit "id="submitSixthExercise">Enviar</button>
             </div>
 
             <div id="gratitudeMessage" style="text-align:center; display:none;">
-                <h2><strong>¡Muchas gracias por participar!</strong></h2>
+                <h2><strong>¡Muchísimas gracias por participar!</strong></h2>
                 <p><strong>Tu contribución es muy valiosa para mi investigación.</strong></p>
             </div>
             
-
-    
-
-
-
     </div>
     <script src="script.js"></script>
 </body>
