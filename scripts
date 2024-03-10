@@ -15,12 +15,12 @@ function doPost(e) {
     if (existingRow != -1) {
         // Actualizar la fila existente
         var range = sheet.getRange(existingRow, 1, 1, sheet.getLastColumn());
-        range.setValues([[data.uniqueId, data.gender, data.age, data.smoker, data.sport, data.sleep, data.reading, data.languages, data.education, data.deviceUse, data.step, data.ejercicio1, data.peopleCount, data.clockTime, data.backpackCount, data.carpetColor, data.boyClothes,data.instruments, data.ejercicio3, data.ejercicio4, data.ejercicio5, data.ejercicio6]]); // ajusta los campos según sea necesario
+        range.setValues([[data.uniqueId, data.gender, data.age, data.smoker, data.sport, data.sleep, data.reading, data.languages, data.education, data.deviceUse, data.ejercicio1, data.peopleCount, data.clockTime, data.backpackCount, data.carpetColor, data.boyClothes,data.instruments, data.ejercicio3, data.ejercicio4, data.ejercicio5, data.ejercicio6]]); // ajusta los campos según sea necesario
     } else {
         // Insertar una nueva fila
-        sheet.appendRow([[data.uniqueId, data.gender, data.age, data.smoker, data.sport, data.sleep, data.reading, data.languages, data.education, data.deviceUse, data.step, data.ejercicio1, data.peopleCount, data.clockTime, data.backpackCount, data.carpetColor, data.boyClothes,data.instruments, data.ejercicio3, data.ejercicio4, data.ejercicio5, data.ejercicio6]]);
+        sheet.appendRow([data.uniqueId, data.gender, data.age, data.smoker, data.sport, data.sleep, data.reading, data.languages, data.education, data.deviceUse, data.ejercicio1, data.peopleCount, data.clockTime, data.backpackCount, data.carpetColor, data.boyClothes,data.instruments, data.ejercicio3, data.ejercicio4, data.ejercicio5, data.ejercicio6]);
     }
-    
+
     // Devolver una respuesta JSON al cliente
     return ContentService.createTextOutput(JSON.stringify({"result": "success"}))
         .setMimeType(ContentService.MimeType.JSON);
