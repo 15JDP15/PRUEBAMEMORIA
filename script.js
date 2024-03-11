@@ -40,7 +40,7 @@ function f_pruebamemoria()
     });
 
     function startMemoryTest() {
-        var timeLeft = 1; // Ajusta este valor al tiempo deseado
+        var timeLeft = 5; // Ajusta este valor al tiempo deseado
         var timerInterval = setInterval(function() {
             timerElement.innerText = timeLeft;
             if (timeLeft <= 0) {
@@ -89,7 +89,7 @@ function f_pruebamemoria()
         setTimeout(function() {
             newImageContainer.style.display = 'none'; // Oculta la imagen después del tiempo especificado
             document.getElementById('secondImageQuestions').style.display = 'block'; // Muestra el formulario de preguntas
-        }, 1000);
+        }, 5000);
     
     });
     
@@ -136,7 +136,7 @@ function f_pruebamemoria()
         setTimeout(function() {
             document.getElementById('fourthImageContainer').style.display = 'none'; // Oculta la imagen después de 1 segundo
             document.getElementById('fourthImageQuestions').style.display = 'block'; // Muestra las preguntas
-        }, 1000); // Ajusta este tiempo si quieres que la imagen se muestre más o menos tiempo
+        }, 5000); // Ajusta este tiempo si quieres que la imagen se muestre más o menos tiempo
     });
 
 
