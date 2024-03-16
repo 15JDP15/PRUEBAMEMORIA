@@ -12,6 +12,8 @@ function f_pruebamemoria()
     var prepForSecondImage = document.getElementById('prepForSecondImage');
     var beginSecondMemorizationButton = document.getElementById('beginSecondMemorization');
     var newImageContainer = document.getElementById('newImageContainer');
+    var thirdImageQuestions = document.getElementById('thirdImageQuestions');
+    var fourthImageQuestions = document.getElementById('fourthImageQuestions');
     var formData = {};
     var uniqueId = new Date().getTime();
 
@@ -102,12 +104,10 @@ function f_pruebamemoria()
         formData["step"] = "secondImageQuestions";
         sendFormDataToGoogleSheet(formData);
         secondImageQuestions.style.display = 'none';
-    });
-
-    document.getElementById('toThirdExercise').addEventListener('click', function() {
         document.getElementById('secondImageQuestions').style.display = 'none';
         document.getElementById('prepForThirdImage').style.display = 'block';
     });
+
     
     document.getElementById('beginThirdMemorization').addEventListener('click', function() {
         // Aquí puedes replicar la lógica de temporizador o visualización de imágenes
@@ -121,8 +121,12 @@ function f_pruebamemoria()
         }, 3000); // Ajusta este tiempo según sea necesario
     });
     
-    document.getElementById('toFourthExercise').addEventListener('click', function() {
+    thirdImageQuestions.addEventListener('submit', function(event) {        
         event.preventDefault();
+        new FormData(thirdImageQuestions).forEach((value, key) => {
+            formData[key] = value;
+        });
+        formData["step"] = "thirdImageQuestions";        
         document.getElementById('prepForThirdImage').style.display = 'none';
         document.getElementById('thirdImageContainer').style.display = 'none';
         document.getElementById('thirdImageQuestions').style.display = 'none';
@@ -176,9 +180,13 @@ function f_pruebamemoria()
         document.getElementById('fifthExerciseContainer').style.display = 'block'; // Mostrar contenedor del ejercicio 5
         setupAudio();
     });
-    
-    document.getElementById('toSixthExercise').addEventListener('click', function() {
+
+    fourthImageQuestions.addEventListener('submit', function(event) {
         event.preventDefault();
+        event.preventDefault();
+        new FormData(fourthImageQuestions).forEach((value, key) => {
+            formData[key] = value;
+        });
         document.getElementById('fifthExerciseQuestions').style.display = 'none';
         document.getElementById('sixthExerciseContainer').style.display = 'block';
     });
