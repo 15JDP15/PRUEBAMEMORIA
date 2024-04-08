@@ -1,6 +1,5 @@
 function f_pruebamemoria() 
 {
-    // 1. Inicialización de variables y elementos del DOM
     var startTestButton = document.getElementById('startTest');
     var introElement = document.getElementById('intro');
     var initialQuestionForm = document.getElementById('initialQuestionForm');
@@ -13,11 +12,9 @@ function f_pruebamemoria()
     var beginSecondMemorizationButton = document.getElementById('beginSecondMemorization');
     var newImageContainer = document.getElementById('newImageContainer');
     var thirdImageQuestions = document.getElementById('thirdImageQuestions');
-    var fourthImageQuestions = document.getElementById('fourthImageQuestions');
     var formData = {};
     var uniqueId = new Date().getTime();
 
-    // Ocultar inicialmente la sección de preparación y el área de imagen
     prepForMemoryTest.style.display = 'none';
     imageArea.style.display = 'none';
     
@@ -95,7 +92,6 @@ function f_pruebamemoria()
     
     });
     
-    // --- FORMULARI secondImageQuestions ---
     secondImageQuestions.addEventListener('submit', function(event) {
         event.preventDefault();
         new FormData(secondImageQuestions).forEach((value, key) => {
@@ -110,23 +106,22 @@ function f_pruebamemoria()
 
     
     document.getElementById('beginThirdMemorization').addEventListener('click', function() {
-        // Aquí puedes replicar la lógica de temporizador o visualización de imágenes
-        // que usaste en los ejercicios anteriores, adaptándola para el tercer ejercicio.
         document.getElementById('prepForThirdImage').style.display = 'none';
         document.getElementById('thirdImageContainer').style.display = 'block';
-        // Suponiendo un tiempo de memorización similar al ejercicio anterior
         setTimeout(function() {
             document.getElementById('thirdImageContainer').style.display = 'none';
             document.getElementById('thirdImageQuestions').style.display = 'block';
         }, 3000); // Ajusta este tiempo según sea necesario
     });
     
-    thirdImageQuestions.addEventListener('submit', function(event) {        
+    thirdImageQuestions.addEventListener('submit', function(event) {
         event.preventDefault();
         new FormData(thirdImageQuestions).forEach((value, key) => {
             formData[key] = value;
         });
-        formData["step"] = "thirdImageQuestions";        
+        formData["step"] = "thirdImageQuestions";
+        sendFormDataToGoogleSheet(formData);
+        thirdImageQuestions.style.display = 'none';       
         document.getElementById('prepForThirdImage').style.display = 'none';
         document.getElementById('thirdImageContainer').style.display = 'none';
         document.getElementById('thirdImageQuestions').style.display = 'none';
@@ -136,12 +131,48 @@ function f_pruebamemoria()
     document.getElementById('beginFourthMemorization').addEventListener('click', function() {
         document.getElementById('prepForFourthImage').style.display = 'none'; // Oculta el texto de preparación
         document.getElementById('fourthImageContainer').style.display = 'block'; // Muestra la imagen
-    
         setTimeout(function() {
-            document.getElementById('fourthImageContainer').style.display = 'none'; // Oculta la imagen después de 1 segundo
-            document.getElementById('fourthImageQuestions').style.display = 'block'; // Muestra las preguntas
-        }, 5000); // Ajusta este tiempo si quieres que la imagen se muestre más o menos tiempo
+            document.getElementById('fourthImageContainer').style.display = 'none'; 
+            document.getElementById('fourthImageQuestions').style.display = 'block'; 
+        }, 5000); // Ajustar tiempo
     });
+
+    document.getElementById('fourthImageQuestions').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevenir el comportamiento de envío por defecto del formulario
+    
+        // Recolectar los datos ingresados por el usuario en el ejercicio 4.
+        var ejercicio4Value = document.getElementById('ejercicio4').value;
+        
+        console.log("Enviando ejercicio 4", ejercicio4Value); // Esto debería mostrarse en la consola del navegador
+        // Agregar los datos del ejercicio 4 al objeto formData.
+        formData['ejercicio4'] = ejercicio4Value;
+        formData["step"] = "fourthExercise"; // Identificar este paso.
+    
+        // Enviar los datos a Google Sheets.
+        sendFormDataToGoogleSheet(formData);
+        
+        // Pasar al siguiente paso en el proceso, que sería el inicio del ejercicio 5.
+        // Ocultamos el contenedor del cuarto ejercicio y mostramos el del quinto.
+        document.getElementById('fourthImageQuestions').style.display = 'none'; // Asegúrate de tener un elemento con esta ID
+        document.getElementById('fifthExerciseContainer').style.display = 'block'; // Mostrar el contenedor para el ejercicio 5
+    });
+    
+    document.getElementById('fifthExerciseQuestions').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        var ejercicio5Value = document.getElementById('ejercicio5').value;
+
+        formData['ejercicio5'] = ejercicio5Value;
+        formData["step"] = "fifthExercise"; 
+
+        sendFormDataToGoogleSheet(formData);
+        
+        document.getElementById('fifthExerciseQuestions').style.display = 'none'; // O usa la ID del contenedor si estás ocultando el contenedor entero
+        document.getElementById('sixthExerciseContainer').style.display = 'block';
+
+    });
+    
+    
+
 
 
     function setupAudio() {
@@ -181,27 +212,36 @@ function f_pruebamemoria()
         setupAudio();
     });
 
-    fourthImageQuestions.addEventListener('submit', function(event) {
-        event.preventDefault();
-        event.preventDefault();
-        new FormData(fourthImageQuestions).forEach((value, key) => {
-            formData[key] = value;
-        });
-        document.getElementById('fifthExerciseQuestions').style.display = 'none';
-        document.getElementById('sixthExerciseContainer').style.display = 'block';
-    });
-
     document.getElementById('submitSixthExercise').addEventListener('click', function() {
     document.getElementById('sixthExerciseContainer').style.display = 'none';
     document.getElementById('gratitudeMessage').style.display = 'block';
 });
 
+document.getElementById('submitSixthExercise').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevenir el comportamiento por defecto, en este caso, la recarga de página
+
+    // Recolectar los datos ingresados por el usuario en el sexto ejercicio.
+    var ejercicio6Value = document.getElementById('ejercicio6').value;
     
+    // Agregar los datos del sexto ejercicio al objeto formData.
+    formData['ejercicio6'] = ejercicio6Value;
+    formData["step"] = "sixthExercise"; // Identificar este paso.
+
+    // Enviar los datos a Google Sheets.
+    sendFormDataToGoogleSheet(formData);
+    
+    // Suponiendo que quieres mostrar un mensaje de agradecimiento o pasar a otro paso después del sexto ejercicio,
+    // necesitas ajustar el display de los elementos correspondientes aquí.
+    // Por ejemplo, si quieres mostrar un mensaje de agradecimiento después del sexto ejercicio:
+    document.getElementById('sixthExerciseContainer').style.display = 'none'; // Ocultar el contenedor del sexto ejercicio
+    document.getElementById('gratitudeMessage').style.display = 'block'; // Mostrar el mensaje de agradecimiento
+});
+
 
     // --- Enviament de dades al Backend ---
     // Funció que envia les dades a Google Sheets
     function sendFormDataToGoogleSheet(data) {
-        fetch('https://script.google.com/macros/s/AKfycbxEKNTaaYja2P8pKOaftoGKEjESQbDO7DrVa_4MlWM0hPrW86uVWWqBniA8PrxZjFTr/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbzQTATu1rAFXWrDYEy_L_pOtXrH2W-u4_UOAeStedaJTlf9UoR13XOIS4oCrhyRWqBG/exec', {
             method: 'POST',
             mode: 'no-cors',
             headers: {
