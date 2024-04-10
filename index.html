@@ -13,13 +13,17 @@
         </ul>
     </nav>
 
+
+
     <h1 id="main-title">The Human Memory</h1>
     <h3>Looking for the limits of our memory</h3>
+
+    <div id="timer" style="display:none;"></div>
 
     <div class="container">
         <div id="intro">
             <h2><strong>Bienvenido al Proyecto de Investigación sobre la Memoria Humana</strong></h2>
-            <p>Esta página web forma parte del Trabajo de investigación de <strong>Jana Pont</strong>, alumna de Bachillerato de la escuela <em>Jesuitas Sarriá – San Ignacio</em>, centrado en la <strong>memoria humana</strong>.</p>
+            <p>Esta página web forma parte del Trabajo de investigación de <strong>Jana Pont</strong>, alumna de Bachillerato de la escuela <em>Jesuitas Sarriá – San Ignacio</em>, centrado en la <strong>memoria humana. Recomiendo hacer el test en un ordenador o tablet.</strong>.</p>
             
             <h2><strong>¿Qué encontrarás aquí?</strong></h2>
             <p>En esta página, te invitamos a participar en una serie de <strong>preguntas y pruebas de memoria</strong>. Los resultados se presentarán de manera <strong>agregada y anónima</strong>. Es importante que, una vez comenzados los ejercicios, completes el proceso sin pausas. La duración total estimada es de <strong>XX minutos</strong>.</p>
@@ -138,7 +142,7 @@
         <div id="imageArea" style="display:none;"></div>
         <div id="timer" style="display:none;">5</div>
         <div id="prepForMemoryTest" style="text-align:center; margin-top:20px; display:none;">
-            <h2>Observa atentamente los siguientes elementos. Dispones de XX segundos para memorizar tantos como puedas.</h2>
+            <h2>Ejercicio 1: Observa atentamente los siguientes elementos. Dispones de XX segundos para memorizar tantos como puedas.</h2>
             <button id="beginMemorization">Empezar</button>
         </div>
 
@@ -146,14 +150,14 @@
 
         <form id="imageQuestionForm" style="display:none;">
             <div class="question2">
-                <h2>Escribe el nombre de todas las imágenes que recuerdas de la página anterior <strong>sin importar el orden.</strong></h2>
+                <h2>Ejercicio 1: Escribe el nombre de todas las imágenes que recuerdas de la página anterior <strong>sin importar el orden.</strong></h2>
                 <input type="text" id="ejercicio1" class="ejercicio1" name="ejercicio1" placeholder="Escribe aquí tu respuesta">
             </div>
             <button type="submit" id="siguiente">Siguiente</button>
         </form>
         
         <div id="prepForSecondImage" style="text-align:center; margin-top:20px; display:none;">
-            <h2>Prepárate para observar la siguiente imagen. Tendrás un <strong>tiempo limitado para memorizar</strong> antes de responder algunas preguntas.</h2>
+            <h2>Ejercicio 2: Prepárate para observar la siguiente imagen. Tendrás un <strong>tiempo limitado para memorizar</strong> antes de responder algunas preguntas.</h2>
             <button id="beginSecondMemorization">Empezar</button>
         </div>
 
@@ -162,7 +166,7 @@
         </div>
 
         <form id="secondImageQuestions" style="display:none;">
-            <h2>Contesta las siguientes preguntas con relación a la imagen anterior (sólo una de las respuestas es correcta):</h2>
+            <h2>Ejercicio 2: Contesta las siguientes preguntas con relación a la imagen anterior (sólo una de las respuestas es correcta):</h2>
             <div class="question-container">
                 <p class="question">¿Cuántas personas aparecían en la imagen?</p>
                 <div class="options">
@@ -231,7 +235,7 @@
         </form>
 
         <div id="prepForThirdImage" style="text-align:center; margin-top:20px; display:none;">
-            <h2>Observa atentamente la siguiente lista de palabras. Dispones de XX segundos para memorizar tantas palabras como puedas <strong>sin importar el orden.</strong> </h2>
+            <h2>Ejercicio 3: Observa atentamente la siguiente lista de palabras. Dispones de XX segundos para memorizar tantas palabras como puedas <strong>sin importar el orden.</strong> </h2>
             <button id="beginThirdMemorization">Empezar</button>
         </div>
         
@@ -240,31 +244,29 @@
         </div>
         
         <form id="thirdImageQuestions" style="display:none;">
-            <h2>Escribe las palabras que recuerdas de la página anterior <strong> sin importar el orden. </strong></h2>
+            <h2>Ejercicio 3: Escribe las palabras que recuerdas de la página anterior <strong> sin importar el orden. </strong></h2>
             <input type="text" id="ejercicio3" class="ejercicio3" name="ejercicio3" placeholder="Escribe aquí tu respuesta">           
             <button type="submit" id="toFourthExercise">Siguiente</button>
         </form>
 
 
         <div id="prepForFourthImage" style="text-align:center; margin-top:20px; display:none;">
-            <h2>Observa atentamente los siguientes números. Dispones de XX segundos para memorizar tantos números en el <strong>orden correcto </strong>como puedas.</h2>
+            <h2>Ejercicio 4: Observa atentamente los siguientes números. Dispones de XX segundos para memorizar tantos números en el <strong>orden correcto </strong>como puedas.</h2>
             <button id="beginFourthMemorization">Comenzar</button>
         </div>
 
-        <!-- Contenedor para la Imagen del Cuarto Ejercicio -->
         <div id="fourthImageContainer" style="display:none; text-align:center; margin:20px 0;">
             <img src="ejercicio4.jpg" alt="Fourth Memory Test Image" class="responsive-image" style="width: 100%; max-width: 800px;" />
         </div>
 
-        <!-- Formulario de Preguntas para el Cuarto Ejercicio -->
         <form id="fourthImageQuestions" style="display:none;">
-            <h2>Escribe los números que recuerdas de la página anterior<strong> en el orden correcto.</strong></h2>
+            <h2>Ejercicio 4: Escribe los números que recuerdas de la página anterior<strong> en el orden correcto.</strong></h2>
             <input type="text" id="ejercicio4" class="ejercicio4" name="ejercicio4" placeholder="Escribe aquí tu respuesta">   
             <button type="submit" id="toFifthExercise">Siguiente</button> 
         </form>
 
         <div id="fifthExerciseContainer" style="text-align:center; margin-top:20px; display:none;">
-            <h2>Escucha atentamente siguiente el audio e intenta recordar <strong>sin importar el orden </strong>el máximo de palabras posibles. <strong> El audio se reproducirá dos veces.</strong> </h2>
+            <h2>Ejercicio 5: Escucha atentamente siguiente el audio e intenta recordar <strong>sin importar el orden </strong>el máximo de palabras posibles. <strong> El audio se reproducirá dos veces. Pulsa el play para empezar</strong> </h2>
             <audio id="memoryAudio" controls>
             <source src="ejercicio5audio.mp3" type="audio/mp3">
             Tu navegador no soporta el elemento de audio.
@@ -273,7 +275,7 @@
             </div>
   
             <form id="fifthExerciseQuestions" style="display:none;">
-                <h2>Escribe las palabras que recuerdas de la página anterior <strong> sin importar el orden. </strong></h2>
+                <h2>Escribe las palabras que recuerdas del audio anterior <strong> sin importar el orden. </strong></h2>
                     <input type="text" id="ejercicio5" class="ejercicio5" name="ejercicio5" placeholder="Escribe aquí tu respuesta">   
                     <button type="submit" id="toSixthExercise">Siguiente</button>
             </form> <!-- Cierre del formulario del quinto ejercicio -->
