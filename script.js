@@ -15,6 +15,7 @@ function f_pruebamemoria() {
     const totalStages = 7; // Suponiendo un total de 6 etapas
     var formData = {};
     var uniqueId = new Date().getTime();
+    let tempEjercicio4Data = {};
 
     prepForMemoryTest.style.display = 'none';
     imageArea.style.display = 'none';
@@ -157,16 +158,21 @@ function f_pruebamemoria() {
 
     document.getElementById('fourthImageQuestions').addEventListener('submit', function(event) {
         event.preventDefault();
-        updateProgress(); // Actualiza el progreso al comenzar el test
-        var ejercicio4Value = document.getElementById('ejercicio4').value;
-        formData['ejercicio4'] = ejercicio4Value;
-        formData["step"] = "fourthExercise";
-
-        sendFormDataToGoogleSheet(formData);
-
+    
+        // Asegúrate de incluir uniqueId y cualquier otro dato relevante que necesite tu hoja
+        tempEjercicio4Data = {
+            uniqueId: uniqueId, // Asegúrate de que uniqueId se define en un scope accesible
+            ejercicio4: document.getElementById('ejercicio4').value,
+            step: "fourthExercise"
+        };
+    
+    
+        // Mueve al usuario al ejercicio 5 sin enviar los datos aún
         document.getElementById('fourthImageQuestions').style.display = 'none';
         document.getElementById('fifthExerciseContainer').style.display = 'block';
     });
+
+
 
     document.getElementById('fifthExerciseQuestions').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -209,6 +215,14 @@ function f_pruebamemoria() {
 
     document.getElementById('toFifthExercise').addEventListener('click', function() {
         event.preventDefault();
+
+        // Actualiza la barra de progreso al comenzar el ejercicio 5
+        updateProgress();
+        
+        // Envía los datos del ejercicio 4 almacenados temporalmente
+        sendFormDataToGoogleSheet(tempEjercicio4Data); // Asegúrate de que esta función maneje correctamente los datos
+        
+        // Continúa con la configuración para mostrar el ejercicio 5
         document.getElementById('fourthImageQuestions').style.display = 'none';
         document.getElementById('fifthExerciseContainer').style.display = 'block';
         setupAudio();
@@ -232,7 +246,7 @@ function f_pruebamemoria() {
     
 
     function sendFormDataToGoogleSheet(data) {
-        fetch('https://script.google.com/macros/s/AKfycbzQTATu1rAFXWrDYEy_L_pOtXrH2W-u4_UOAeStedaJTlf9UoR13XOIS4oCrhyRWqBG/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbzJ3bmlAc4xzhQu_vxqHjCBLxLY2RvlfZOZ0Kl4OmOrpxdQci_3JceoQVyu6ZMd--li/exec', {
             method: 'POST',
             mode: 'no-cors',
             headers: {
