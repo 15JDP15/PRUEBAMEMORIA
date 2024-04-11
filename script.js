@@ -11,8 +11,8 @@ function f_pruebamemoria() {
     var beginSecondMemorizationButton = document.getElementById('beginSecondMemorization');
     var newImageContainer = document.getElementById('newImageContainer');
     var thirdImageQuestions = document.getElementById('thirdImageQuestions');
-    var currentStage = 0; // Nuevo: para controlar el progreso del test
-    const totalStages = 7; // Suponiendo un total de 6 etapas
+    var currentStage = 0;
+    const totalStages = 7;
     var formData = {};
     var uniqueId = new Date().getTime();
     let tempEjercicio4Data = {};
@@ -34,7 +34,7 @@ function f_pruebamemoria() {
         formData["step"] = "initialQuestionForm";
         formData["uniqueId"] = uniqueId;
         sendFormDataToGoogleSheet(formData);
-        updateProgress(); // Actualiza el progreso al comenzar el test
+        updateProgress();
         initialQuestionForm.style.display = 'none';
         prepForMemoryTest.style.display = 'block';
     });
@@ -43,10 +43,8 @@ function f_pruebamemoria() {
         introElement.style.display = 'none';
         startTestButton.style.display = 'none';
         initialQuestionForm.style.display = 'block';
-        window.scrollTo(0, 0); //Moure al principi
-
+        window.scrollTo(0, 0);
     });
-    
 
     function startMemoryTest(duration) {
         var timeLeft = duration;
@@ -82,7 +80,7 @@ function f_pruebamemoria() {
         });
         formData["step"] = "imageQuestionForm";
         sendFormDataToGoogleSheet(formData);
-        updateProgress(); // Actualiza el progreso al comenzar el test
+        updateProgress();
         imageQuestionForm.style.display = 'none';
         prepForSecondImage.style.display = 'block';
 
@@ -113,7 +111,7 @@ function f_pruebamemoria() {
         });
         formData["step"] = "secondImageQuestions";
         sendFormDataToGoogleSheet(formData);
-        updateProgress(); // Actualiza el progreso al comenzar el test
+        updateProgress();
         secondImageQuestions.style.display = 'none';
         document.getElementById('secondImageQuestions').style.display = 'none';
         document.getElementById('prepForThirdImage').style.display = 'block';
@@ -135,8 +133,7 @@ function f_pruebamemoria() {
             formData[key] = value;
         });
         formData["step"] = "thirdImageQuestions";
-        updateProgress(); // Actualiza el progreso al comenzar el test
-
+        updateProgress();
         sendFormDataToGoogleSheet(formData);
         thirdImageQuestions.style.display = 'none';
         document.getElementById('prepForThirdImage').style.display = 'none';
@@ -159,15 +156,12 @@ function f_pruebamemoria() {
     document.getElementById('fourthImageQuestions').addEventListener('submit', function(event) {
         event.preventDefault();
     
-        // Asegúrate de incluir uniqueId y cualquier otro dato relevante que necesite tu hoja
         tempEjercicio4Data = {
-            uniqueId: uniqueId, // Asegúrate de que uniqueId se define en un scope accesible
+            uniqueId: uniqueId,
             ejercicio4: document.getElementById('ejercicio4').value,
             step: "fourthExercise"
         };
     
-    
-        // Mueve al usuario al ejercicio 5 sin enviar los datos aún
         document.getElementById('fourthImageQuestions').style.display = 'none';
         document.getElementById('fifthExerciseContainer').style.display = 'block';
     });
@@ -180,7 +174,7 @@ function f_pruebamemoria() {
 
         formData['ejercicio5'] = ejercicio5Value;
         formData["step"] = "fifthExercise";
-        updateProgress(); // Actualiza el progreso al comenzar el test
+        updateProgress();
         sendFormDataToGoogleSheet(formData);
 
         document.getElementById('fifthExerciseQuestions').style.display = 'none';
@@ -215,14 +209,8 @@ function f_pruebamemoria() {
 
     document.getElementById('toFifthExercise').addEventListener('click', function() {
         event.preventDefault();
-
-        // Actualiza la barra de progreso al comenzar el ejercicio 5
         updateProgress();
-        
-        // Envía los datos del ejercicio 4 almacenados temporalmente
-        sendFormDataToGoogleSheet(tempEjercicio4Data); // Asegúrate de que esta función maneje correctamente los datos
-        
-        // Continúa con la configuración para mostrar el ejercicio 5
+        sendFormDataToGoogleSheet(tempEjercicio4Data);
         document.getElementById('fourthImageQuestions').style.display = 'none';
         document.getElementById('fifthExerciseContainer').style.display = 'block';
         setupAudio();
@@ -237,7 +225,6 @@ function f_pruebamemoria() {
     
         sendFormDataToGoogleSheet(formData);
     
-        // Forzar a la barra de progreso al 100% al finalizar el test
         document.getElementById("progressBar").style.width = "100%";
     
         document.getElementById('sixthExerciseContainer').style.display = 'none';
@@ -270,23 +257,16 @@ function f_pruebamemoria() {
     });
 }
 
-
-
-  
 document.getElementById('skipAudio').addEventListener('click', function() {
-    // Muestra un diálogo de confirmación
     var confirmSkip = confirm("¿Estás seguro de que quieres saltar el audio?");
     if (confirmSkip) {
-        // Si el usuario confirma, pausa el audio y reinicia el tiempo
         var audio = document.getElementById('memoryAudio');
         audio.pause();
         audio.currentTime = 0;
         
-        // Llama a la función para mostrar el siguiente paso/formulario
         showQuestionnaire();
     }
 });
-
 
 function startTimer(duration, onComplete) {
     var timeLeft = duration;
