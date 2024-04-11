@@ -332,7 +332,7 @@ border-color: #0056b3;
   #progressBar {
     width: 0%;
     height: 20px;
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
     transition: width 0.5s; /* Añade una transición suave al cambiar el ancho */
   }
   

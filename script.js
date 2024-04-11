@@ -134,8 +134,9 @@ function f_pruebamemoria() {
             formData[key] = value;
         });
         formData["step"] = "thirdImageQuestions";
-        sendFormDataToGoogleSheet(formData);
         updateProgress(); // Actualiza el progreso al comenzar el test
+
+        sendFormDataToGoogleSheet(formData);
         thirdImageQuestions.style.display = 'none';
         document.getElementById('prepForThirdImage').style.display = 'none';
         document.getElementById('thirdImageContainer').style.display = 'none';
@@ -156,17 +157,12 @@ function f_pruebamemoria() {
 
     document.getElementById('fourthImageQuestions').addEventListener('submit', function(event) {
         event.preventDefault();
-
+        updateProgress(); // Actualiza el progreso al comenzar el test
         var ejercicio4Value = document.getElementById('ejercicio4').value;
-
-        console.log("Enviando ejercicio 4", ejercicio4Value);
         formData['ejercicio4'] = ejercicio4Value;
         formData["step"] = "fourthExercise";
 
         sendFormDataToGoogleSheet(formData);
-        updateProgress(); // Actualiza el progreso al comenzar el test
-
-    
 
         document.getElementById('fourthImageQuestions').style.display = 'none';
         document.getElementById('fifthExerciseContainer').style.display = 'block';
@@ -178,7 +174,7 @@ function f_pruebamemoria() {
 
         formData['ejercicio5'] = ejercicio5Value;
         formData["step"] = "fifthExercise";
-
+        updateProgress(); // Actualiza el progreso al comenzar el test
         sendFormDataToGoogleSheet(formData);
 
         document.getElementById('fifthExerciseQuestions').style.display = 'none';
@@ -218,25 +214,22 @@ function f_pruebamemoria() {
         setupAudio();
     });
 
-    document.getElementById('submitSixthExercise').addEventListener('click', function() {
-        document.getElementById('sixthExerciseContainer').style.display = 'none';
-        document.getElementById('gratitudeMessage').style.display = 'block';
-    });
-
     document.getElementById('submitSixthExercise').addEventListener('click', function(event) {
         event.preventDefault();
-
         var ejercicio6Value = document.getElementById('ejercicio6').value;
-
+    
         formData['ejercicio6'] = ejercicio6Value;
         formData["step"] = "sixthExercise";
-
+    
         sendFormDataToGoogleSheet(formData);
-        updateProgress(); // Actualiza el progreso al comenzar el test
-
+    
+        // Forzar a la barra de progreso al 100% al finalizar el test
+        document.getElementById("progressBar").style.width = "100%";
+    
         document.getElementById('sixthExerciseContainer').style.display = 'none';
         document.getElementById('gratitudeMessage').style.display = 'block';
     });
+    
 
     function sendFormDataToGoogleSheet(data) {
         fetch('https://script.google.com/macros/s/AKfycbzQTATu1rAFXWrDYEy_L_pOtXrH2W-u4_UOAeStedaJTlf9UoR13XOIS4oCrhyRWqBG/exec', {
