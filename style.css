@@ -445,7 +445,19 @@ to {opacity: 1; transform: translateY(0);}
         font-size: 0.8em; /* Reduce el tamaño del texto del temporizador */
         padding: 8px 20px; /* Ajusta el padding para hacer el temporizador más pequeño */
         /* Ajusta cualquier otro estilo necesario para el temporizador aquí */
-      }
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--primary-color); /* Ajusta el color de fondo según sea necesario */
+      color: var(--text-color2); /* Ajusta el color del texto según sea necesario */
+      text-align: center;
+      border-radius: 25px; /* Redondea los bordes */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Opcional: añade una sombra suave */
+      white-space: nowrap; /* Asegura que el texto no se divida en varias líneas */
+      margin: 0 auto 20px; /* Centra el temporizador horizontalmente y añade margen inferior */
+      width: fit-content;
+  }
   }
   
 
