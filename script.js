@@ -245,6 +245,21 @@ function f_pruebamemoria() {
     });
 }
 
+document.getElementById('skipAudio').addEventListener('click', function() {
+    // Muestra un diálogo de confirmación
+    var confirmSkip = confirm("¿Estás seguro de que quieres saltar el audio?");
+    if (confirmSkip) {
+        // Si el usuario confirma, pausa el audio y reinicia el tiempo
+        var audio = document.getElementById('memoryAudio');
+        audio.pause();
+        audio.currentTime = 0;
+        
+        // Llama a la función para mostrar el siguiente paso/formulario
+        showQuestionnaire();
+    }
+});
+
+
 function startTimer(duration, onComplete) {
     var timeLeft = duration;
     var timerElement = document.getElementById('timer');
