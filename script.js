@@ -11,11 +11,19 @@ function f_pruebamemoria() {
     var beginSecondMemorizationButton = document.getElementById('beginSecondMemorization');
     var newImageContainer = document.getElementById('newImageContainer');
     var thirdImageQuestions = document.getElementById('thirdImageQuestions');
+    var currentStage = 0; // Nuevo: para controlar el progreso del test
+    const totalStages = 7; // Suponiendo un total de 6 etapas
     var formData = {};
     var uniqueId = new Date().getTime();
 
     prepForMemoryTest.style.display = 'none';
     imageArea.style.display = 'none';
+
+    function updateProgress() {
+        currentStage++;
+        let progressPercentage = (currentStage / totalStages) * 100;
+        document.getElementById("progressBar").style.width = progressPercentage + "%";
+    }
 
     initialQuestionForm.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -25,6 +33,7 @@ function f_pruebamemoria() {
         formData["step"] = "initialQuestionForm";
         formData["uniqueId"] = uniqueId;
         sendFormDataToGoogleSheet(formData);
+        updateProgress(); // Actualiza el progreso al comenzar el test
         initialQuestionForm.style.display = 'none';
         prepForMemoryTest.style.display = 'block';
     });
@@ -34,6 +43,7 @@ function f_pruebamemoria() {
         startTestButton.style.display = 'none';
         initialQuestionForm.style.display = 'block';
         window.scrollTo(0, 0); //Moure al principi
+
     });
     
 
@@ -71,8 +81,10 @@ function f_pruebamemoria() {
         });
         formData["step"] = "imageQuestionForm";
         sendFormDataToGoogleSheet(formData);
+        updateProgress(); // Actualiza el progreso al comenzar el test
         imageQuestionForm.style.display = 'none';
         prepForSecondImage.style.display = 'block';
+
     });
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -100,6 +112,7 @@ function f_pruebamemoria() {
         });
         formData["step"] = "secondImageQuestions";
         sendFormDataToGoogleSheet(formData);
+        updateProgress(); // Actualiza el progreso al comenzar el test
         secondImageQuestions.style.display = 'none';
         document.getElementById('secondImageQuestions').style.display = 'none';
         document.getElementById('prepForThirdImage').style.display = 'block';
@@ -122,6 +135,7 @@ function f_pruebamemoria() {
         });
         formData["step"] = "thirdImageQuestions";
         sendFormDataToGoogleSheet(formData);
+        updateProgress(); // Actualiza el progreso al comenzar el test
         thirdImageQuestions.style.display = 'none';
         document.getElementById('prepForThirdImage').style.display = 'none';
         document.getElementById('thirdImageContainer').style.display = 'none';
@@ -150,6 +164,9 @@ function f_pruebamemoria() {
         formData["step"] = "fourthExercise";
 
         sendFormDataToGoogleSheet(formData);
+        updateProgress(); // Actualiza el progreso al comenzar el test
+
+    
 
         document.getElementById('fourthImageQuestions').style.display = 'none';
         document.getElementById('fifthExerciseContainer').style.display = 'block';
@@ -215,6 +232,7 @@ function f_pruebamemoria() {
         formData["step"] = "sixthExercise";
 
         sendFormDataToGoogleSheet(formData);
+        updateProgress(); // Actualiza el progreso al comenzar el test
 
         document.getElementById('sixthExerciseContainer').style.display = 'none';
         document.getElementById('gratitudeMessage').style.display = 'block';
@@ -245,6 +263,9 @@ function f_pruebamemoria() {
     });
 }
 
+
+
+  
 document.getElementById('skipAudio').addEventListener('click', function() {
     // Muestra un diálogo de confirmación
     var confirmSkip = confirm("¿Estás seguro de que quieres saltar el audio?");

@@ -321,6 +321,21 @@ font-size: 1em;
 border-color: #0056b3;
 }
 
+#progressContainer {
+    width: 100%;
+    background-color: #eee;
+    position: fixed; /* Hace que la barra de progreso sea visible siempre al final de la página */
+    bottom: 0;
+    left: 0;
+  }
+  
+  #progressBar {
+    width: 0%;
+    height: 20px;
+    background-color: #4CAF50;
+    transition: width 0.5s; /* Añade una transición suave al cambiar el ancho */
+  }
+  
 .panel {
 padding: 0 18px;
 display: none;
