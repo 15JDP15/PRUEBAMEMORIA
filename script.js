@@ -33,7 +33,9 @@ function f_pruebamemoria() {
         introElement.style.display = 'none';
         startTestButton.style.display = 'none';
         initialQuestionForm.style.display = 'block';
+        window.scrollTo(0, 0); //Moure al principi
     });
+    
 
     function startMemoryTest(duration) {
         var timeLeft = duration;
