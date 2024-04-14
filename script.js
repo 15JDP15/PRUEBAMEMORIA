@@ -15,7 +15,6 @@ function f_pruebamemoria() {
     const totalStages = 7;
     var formData = {};
     var uniqueId = new Date().getTime();
-    let tempEjercicio4Data = {};
 
     prepForMemoryTest.style.display = 'none';
     imageArea.style.display = 'none';
@@ -155,13 +154,7 @@ function f_pruebamemoria() {
 
     document.getElementById('fourthImageQuestions').addEventListener('submit', function(event) {
         event.preventDefault();
-    
-        tempEjercicio4Data = {
-            uniqueId: uniqueId,
-            ejercicio4: document.getElementById('ejercicio4').value,
-            step: "fourthExercise"
-        };
-    
+
         document.getElementById('fourthImageQuestions').style.display = 'none';
         document.getElementById('fifthExerciseContainer').style.display = 'block';
     });
@@ -207,14 +200,22 @@ function f_pruebamemoria() {
         document.getElementById('fifthExerciseQuestions').style.display = 'block';
     }
 
-    document.getElementById('toFifthExercise').addEventListener('click', function() {
+
+    fourthImageQuestions.addEventListener('submit', function(event) {
         event.preventDefault();
+        new FormData(fourthImageQuestions).forEach((value, key) => {
+            formData[key] = value;
+        });
+        formData["step"] = "fourthImageQuestions";
         updateProgress();
-        sendFormDataToGoogleSheet(tempEjercicio4Data);
+        sendFormDataToGoogleSheet(formData);
+        fourthImageQuestions.style.display = 'none';
         document.getElementById('fourthImageQuestions').style.display = 'none';
         document.getElementById('fifthExerciseContainer').style.display = 'block';
         setupAudio();
     });
+
+ 
 
     document.getElementById('submitSixthExercise').addEventListener('click', function(event) {
         event.preventDefault();
