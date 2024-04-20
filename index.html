@@ -23,14 +23,14 @@
     <div class="container">
         <div id="intro">
             <h2><strong>Bienvenido al Proyecto de Investigación sobre la Memoria Humana</strong></h2>
-            <p>Esta página web forma parte del Trabajo de investigación de <strong>Jana Pont</strong>, alumna de Bachillerato de la escuela <em>Jesuitas Sarriá – San Ignacio</em>, centrado en la <strong>memoria humana.</strong></p>
+            <p>Esta página web forma parte del Proyecto de Investigación de <strong>Jana Pont</strong>, alumna de Bachillerato de la escuela <em>Jesuitas Sarriá – San Ignacio</em>, centrado en la <strong>memoria humana.</strong></p>
             
             <h2><strong>¿Qué encontrarás aquí?</strong></h2>
-            <p>En esta página, te invito a participar en una serie de <strong>preguntas y pruebas de memoria</strong>. Los resultados se presentarán de manera <strong>agregada y anónima</strong>. Es importante que, una vez comenzados los ejercicios, completes el proceso sin pausas. La duración total estimada es de <strong>XX minutos</strong>.</p>
+            <p>En esta página, te invito a participar en una serie de <strong>preguntas y pruebas de memoria</strong>. Los resultados se presentarán de manera <strong>agregada y anónima</strong>. Es importante que, una vez comenzados los ejercicios, completes el proceso sin pausas. La duración total estimada es de <strong>aproximadamente 5 minutos</strong>.</p>
             
             <h2><strong>Participa en la Segunda Fase</strong></h2>
             <p>El proyecto se complementa con una <strong>segunda fase</strong>, en la que los participantes seguirán unas pautas de entrenamiento diseñadas para <strong>mejorar su memoria</strong>. Si estás interesado en formar parte de esta fase, no dudes en contactarme a través del correo electrónico: <a href="mailto:humanmemorytest@gmail.com">humanmemorytest@gmail.com</a>.</p>
-            <p style="font-size: medium;"><strong>¡Agradecemos tu participación!</strong></p>
+            <p style="font-size: medium;"><strong>Agradezco tu participación!</strong></p>
             <button id="startTest">Comenzar el Test</button>
         </div>
 
@@ -50,12 +50,10 @@
             <!-- Pregunta: Edad -->
             <div class="question-container">
                 <p class="question">¿Cuál es tu edad?</p>
+                <input type="text" id="age" class="age" name="age" placeholder="Escribe aquí tu respuesta">
+
                 <div class="options">
-                    <label><input type="radio" name="age" value="less-15"> Menos de 15 años</label>
-                    <label><input type="radio" name="age" value="15-25"> Entre 15 y 25 años</label>
-                    <label><input type="radio" name="age" value="26-45"> Entre 26 y 45 años</label>
-                    <label><input type="radio" name="age" value="46-65"> Entre 46 y 65 años</label>
-                    <label><input type="radio" name="age" value="more-66"> Más de 66 años</label>
+
                 </div>
             </div>
         
@@ -70,32 +68,31 @@
         
             <!-- Pregunta: Deporte -->
             <div class="question-container">
-                <p class="question">¿Cuántas horas de deporte haces de media en la semana?</p>
+                <p class="question">¿Cuántas horas de deporte haces de media a la semana?</p>
+                <input type="text" id="sport" class="sport" name="sport" placeholder="Escribe aquí tu respuesta">
+
                 <div class="options">
-                    <label><input type="radio" name="sport" value="0"> 0</label>
-                    <label><input type="radio" name="sport" value="1-5"> Entre 1 y 5 horas</label>
-                    <label><input type="radio" name="sport" value="6-10"> Entre 6 y 10 horas</label>
-                    <label><input type="radio" name="sport" value="more-10"> Más de 10 horas</label>
+
                 </div>
             </div>
         
             <!-- Pregunta: Sueño -->
             <div class="question-container">
-                <p class="question">¿Cuántas horas duermes de media en el día?</p>
+                <p class="question">¿Cuántas horas duermes de media al día?</p>
+                <input type="text" id="sleep" class="sleep" name="sleep" placeholder="Escribe aquí tu respuesta">
+
                 <div class="options">
-                    <label><input type="radio" name="sleep" value="less-6"> Menos de 6 horas</label>
-                    <label><input type="radio" name="sleep" value="7-8"> Entre 7 y 8 horas</label>
-                    <label><input type="radio" name="sleep" value="more-8"> Más de 8 horas</label>
+
                 </div>
             </div>
         
             <!-- Pregunta: Lectura -->
             <div class="question-container">
-                <p class="question">¿Cuántas horas de lectura dedicas a la semana?</p>
+                <p class="question">Fuera de tu horario laboral/escolar ¿cuántas horas de lectura dedicas a la semana?</p>
+                <input type="text" id="reading" class="reading" name="reading" placeholder="Escribe aquí tu respuesta">
+
                 <div class="options">
-                    <label><input type="radio" name="reading" value="less-2"> Menos de 2 horas</label>
-                    <label><input type="radio" name="reading" value="3-5"> Entre 3 y 5 horas</label>
-                    <label><input type="radio" name="reading" value="more-5"> Más de 5 horas</label>
+
                 </div>
             </div>
         
@@ -119,17 +116,19 @@
                     <label><input type="radio" name="education" value="secondary"> Secundaria</label>
                     <label><input type="radio" name="education" value="highschool"> Bachillerato</label>
                     <label><input type="radio" name="education" value="university"> Universitario</label>
+                    <label><input type="radio" name="education" value="master"> Máster</label>
+
                     <label><input type="radio" name="education" value="phd"> Doctorado</label>
                 </div>
             </div>
         
             <!-- Pregunta: Uso de dispositivos -->
             <div class="question-container">
-                <p class="question">¿Cuántas horas al día utilizas el móvil/tablet/videoconsola/otros dispositivos?</p>
+                <p class="question">Fuera de tu horario laboral/escolar, ¿cuántas horas al día utilizas el móvil/tablet/videoconsola/otros dispositivos?</p>
+                <input type="text" id="deviceUse" class="deviceUse" name="deviceUse" placeholder="Escribe aquí tu respuesta">
+
                 <div class="options">
-                    <label><input type="radio" name="deviceUse" value="less-2"> Menos de 2 horas</label>
-                    <label><input type="radio" name="deviceUse" value="3-5"> Entre 3 y 5 horas</label>
-                    <label><input type="radio" name="deviceUse" value="more-6"> Más de 6 horas</label>
+
                 </div>
             </div>
         
@@ -141,7 +140,7 @@
         <div id="imageArea" style="display:none;"></div>
         <div id="timer" style="display:none;">5</div>
         <div id="prepForMemoryTest" style="text-align:center; margin-top:20px; display:none;">
-            <h2>Ejercicio 1: Observa atentamente los siguientes elementos. Dispones de XX segundos para memorizar tantos como puedas.</h2>
+            <h2>Ejercicio 1: Observa atentamente los siguientes elementos. Dispones de 30 segundos para memorizar tantos como puedas.</h2>
             <button id="beginMemorization">Empezar</button>
         </div>
 
@@ -234,7 +233,7 @@
         </form>
 
         <div id="prepForThirdImage" style="text-align:center; margin-top:20px; display:none;">
-            <h2>Ejercicio 3: Observa atentamente la siguiente lista de palabras. Dispones de XX segundos para memorizar tantas palabras como puedas <strong>sin importar el orden.</strong> </h2>
+            <h2>Ejercicio 3: Observa atentamente la siguiente lista de palabras. Dispones de 30 segundos para memorizar tantas palabras como puedas <strong>sin importar el orden.</strong> </h2>
             <button id="beginThirdMemorization">Empezar</button>
         </div>
         
@@ -250,7 +249,7 @@
 
 
         <div id="prepForFourthImage" style="text-align:center; margin-top:20px; display:none;">
-            <h2>Ejercicio 4: Observa atentamente los siguientes números. Dispones de XX segundos para memorizar tantos números en el <strong>orden correcto </strong>como puedas.</h2>
+            <h2>Ejercicio 4: Observa atentamente los siguientes números. Dispones de 30 segundos para memorizar tantos números en el <strong>orden correcto </strong>como puedas.</h2>
             <button id="beginFourthMemorization">Comenzar</button>
         </div>
 
