@@ -30,13 +30,13 @@
             
             <h2><strong>Participa en la Segunda Fase</strong></h2>
             <p>El proyecto se complementa con una <strong>segunda fase</strong>, en la que los participantes seguirán unas pautas de entrenamiento diseñadas para <strong>mejorar su memoria</strong>. Si estás interesado en formar parte de esta fase, no dudes en contactarme a través del correo electrónico: <a href="mailto:humanmemorytest@gmail.com">humanmemorytest@gmail.com</a>.</p>
-            <p style="font-size: medium;"><strong>Agradezco tu participación!</strong></p>
-            <button id="startTest">Comenzar el Test</button>
+            <p style="font-size: medium;"><strong>¡Agradezco tu participación!</strong></p>
+            <button id="startTest">Empezar el Test</button>
         </div>
 
         <!-- Formulario para las preguntas iniciales -->
         <form id="initialQuestionForm" style="display:none;">
-            <h2><strong>Antes de empezar los ejercicios de memoria, por favor contesta las siguientes preguntas</strong></h2>
+            <h2><strong>Antes de empezar los ejercicios de memoria, por favor contesta las siguientes preguntas:</strong></h2>
         
             <!-- Pregunta: Género -->
             <div class="question-container">
@@ -88,7 +88,7 @@
         
             <!-- Pregunta: Lectura -->
             <div class="question-container">
-                <p class="question">Fuera de tu horario laboral/escolar ¿cuántas horas de lectura dedicas a la semana?</p>
+                <p class="question">Fuera de tu horario laboral/escolar ¿cuántas horas de lectura dedicas de media a la semana?</p>
                 <input type="text" id="reading" class="reading" name="reading" placeholder="Escribe aquí tu respuesta">
 
                 <div class="options">
@@ -124,7 +124,7 @@
         
             <!-- Pregunta: Uso de dispositivos -->
             <div class="question-container">
-                <p class="question">Fuera de tu horario laboral/escolar, ¿cuántas horas al día utilizas el móvil/tablet/videoconsola/otros dispositivos?</p>
+                <p class="question">Fuera de tu horario laboral/escolar, ¿cuántas horas de media al día utilizas el móvil/tablet/videoconsola/otros dispositivos?</p>
                 <input type="text" id="deviceUse" class="deviceUse" name="deviceUse" placeholder="Escribe aquí tu respuesta">
 
                 <div class="options">
@@ -140,7 +140,7 @@
         <div id="imageArea" style="display:none;"></div>
         <div id="timer" style="display:none;">5</div>
         <div id="prepForMemoryTest" style="text-align:center; margin-top:20px; display:none;">
-            <h2>Ejercicio 1: Observa atentamente los siguientes elementos. Dispones de 30 segundos para memorizar tantos como puedas.</h2>
+            <h2>Ejercicio 1: Observa atentamente los siguientes elementos. Dispones de 30 segundos para memorizar,<strong> sin importar el orden</strong>, tantos como puedas.</h2>
             <button id="beginMemorization">Empezar</button>
         </div>
 
@@ -155,7 +155,7 @@
         </form>
         
         <div id="prepForSecondImage" style="text-align:center; margin-top:20px; display:none;">
-            <h2>Ejercicio 2: Prepárate para observar la siguiente imagen. Tendrás un <strong>tiempo limitado para memorizar</strong> antes de responder algunas preguntas.</h2>
+            <h2>Ejercicio 2: Prepárate para observar la siguiente imagen. Tendrás un <strong>tiempo limitado para memorizarla</strong> antes de responder algunas preguntas.</h2>
             <button id="beginSecondMemorization">Empezar</button>
         </div>
 
@@ -164,7 +164,7 @@
         </div>
 
         <form id="secondImageQuestions" style="display:none;">
-            <h2>Ejercicio 2: Contesta las siguientes preguntas con relación a la imagen anterior (sólo una de las respuestas es correcta):</h2>
+            <h2>Ejercicio 2: Contesta las siguientes preguntas en relación a la imagen anterior (sólo una de las respuestas es correcta):</h2>
             <div class="question-container">
                 <p class="question">¿Cuántas personas aparecían en la imagen?</p>
                 <div class="options">
@@ -250,7 +250,7 @@
 
         <div id="prepForFourthImage" style="text-align:center; margin-top:20px; display:none;">
             <h2>Ejercicio 4: Observa atentamente los siguientes números. Dispones de 30 segundos para memorizar tantos números en el <strong>orden correcto </strong>como puedas.</h2>
-            <button id="beginFourthMemorization">Comenzar</button>
+            <button id="beginFourthMemorization">Empezar</button>
         </div>
 
         <div id="fourthImageContainer" style="display:none; text-align:center; margin:20px 0;">
@@ -264,7 +264,7 @@
         </form>
 
         <div id="fifthExerciseContainer" style="text-align:center; margin-top:20px; display:none;">
-            <h2>Ejercicio 5: Escucha atentamente siguiente el audio e intenta recordar <strong>sin importar el orden </strong>el máximo de palabras posibles. <strong> El audio se reproducirá dos veces. Pulsa el play para empezar</strong> </h2>
+            <h2>Ejercicio 5: Escucha atentamente siguiente el audio e intenta recordar, <strong>sin importar el orden </strong>, el máximo de palabras posibles. <strong> El audio se reproducirá dos veces. Pulsa el botón play para empezar.</strong> </h2>
             <audio id="memoryAudio" controls>
             <source src="ejercicio5audio.aac" type="audio/aac">
             Tu navegador no soporta el elemento de audio.
@@ -279,7 +279,7 @@
             </form> <!-- Cierre del formulario del quinto ejercicio -->
     
             <div id="sixthExerciseContainer" style="text-align:center; margin-top:20px; display:none;">
-                <h2>Ejercicio 6: Escribe el nombre de las imágenes que recuerdas del primer ejercicio que has realizado al empezar (la primera era la imagen de un helado)</h2>
+                <h2>Ejercicio 6: Escribe, <strong>sin importar el orden</strong>, el nombre de las imágenes que recuerdas del primer ejercicio que has realizado al empezar (la primera era la imagen de un helado).</h2>
                 <input type="text" id="ejercicio6" class="ejercicio6" name="ejercicio6" placeholder="Escribe aquí tu respuesta">   
                 <button type="submit "id="submitSixthExercise">Enviar</button>
             </div>
