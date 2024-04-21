@@ -69,7 +69,7 @@ function f_pruebamemoria() {
         imageArea.style.display = 'block';
         timerElement.style.display = 'block';
         imageArea.innerHTML = '<img src="ejercicio1.jpg" alt="Memory Test Image" id="ejercicio1" class="responsive-image" />';
-        startMemoryTest(30);
+        startMemoryTest(5);
     });
 
     imageQuestionForm.addEventListener('submit', function(event) {
@@ -97,7 +97,7 @@ function f_pruebamemoria() {
         prepForSecondImage.style.display = 'none';
         newImageContainer.style.display = 'block';
 
-        startTimer(30, function() {
+        startTimer(5, function() {
             newImageContainer.style.display = 'none';
             document.getElementById('secondImageQuestions').style.display = 'block';
         });
@@ -119,7 +119,7 @@ function f_pruebamemoria() {
     document.getElementById('beginThirdMemorization').addEventListener('click', function() {
         document.getElementById('prepForThirdImage').style.display = 'none';
         document.getElementById('thirdImageContainer').style.display = 'block';
-        startTimer(30, function() {
+        startTimer(5, function() {
             newImageContainer.style.display = 'none';
             document.getElementById('thirdImageContainer').style.display = 'none';
             document.getElementById('thirdImageQuestions').style.display = 'block';
@@ -145,7 +145,7 @@ function f_pruebamemoria() {
         document.getElementById('prepForFourthImage').style.display = 'none';
         document.getElementById('fourthImageContainer').style.display = 'block';
 
-        startTimer(30, function() {
+        startTimer(5, function() {
             newImageContainer.style.display = 'none';
             document.getElementById('fourthImageContainer').style.display = 'none';
             document.getElementById('fourthImageQuestions').style.display = 'block';
